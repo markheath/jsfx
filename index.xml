@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" name="Mark Heath">
   <category name="Airwindows">
-    <reapack name="Airwindows Bright Ambience 3" desc="Reverb">
+    <reapack name="Airwindows Bright Ambience 3" type="effect" desc="Reverb">
       <version name="0.2" author="Mark Heath" time="2022-05-06T21:46:56+01:00">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-brightambience3.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-brightambience3.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows Console7" desc="Saturation">
+    <reapack name="Airwindows Console7" type="effect" desc="Saturation">
       <version name="0.1" author="Mark Heath" time="2022-05-02">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-console7.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-console7.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows Galactic" desc="Reverb">
+    <reapack name="Airwindows Galactic" type="effect" desc="Reverb">
       <version name="0.1" author="Mark Heath" time="2022-05-02">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-galactic.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-galactic.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows PurestAir" desc="EQ">
+    <reapack name="Airwindows PurestAir" type="effect" desc="EQ">
       <version name="0.1" author="Mark Heath" time="2022-05-02">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-purest-air.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-purest-air.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows PurestGain" desc="Gain">
+    <reapack name="Airwindows PurestGain" type="effect" desc="Gain">
       <version name="0.1" author="Mark Heath" time="2022-05-02">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-purest-gain.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-purest-gain.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows NC-17" desc="Loudness">
+    <reapack name="Airwindows NC-17" type="effect" desc="Loudness">
       <version name="0.2" author="Mark Heath" time="2022-05-06">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-nc-17.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-nc-17.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows ToTape6" desc="Tape">
+    <reapack name="Airwindows ToTape6" type="effect" desc="Tape">
       <version name="0.3" author="Mark Heath" time="2022-05-06">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-totape6.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-totape6.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows Verbity" desc="Reverb">
+    <reapack name="Airwindows Verbity" type="effect" desc="Reverb">
       <version name="0.2" author="Mark Heath" time="2022-05-06">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-verbity.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-verbity.jsfx</source>

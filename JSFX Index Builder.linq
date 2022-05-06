@@ -115,7 +115,7 @@ result.Dump();
 
 public class ReaPack {
 	[XmlAttribute("name")] public string Name { get; set; }
-	[XmlAttribute("type")] public string Type { get; } = "effect";
+	[XmlAttribute("type")] public string Type { get; set; } = "effect";
 	[XmlAttribute("desc")] public string Desc { get; set; }
 	[XmlElement("version")] public List<Version> Versions { get; } = new List<Version>();
 }
