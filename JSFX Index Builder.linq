@@ -7,7 +7,7 @@ var serializer = new XmlSerializer(typeof(Index));
 var index = new Index() { Name = "Mark Heath" };
 var airwindows = new Category() { Name="Airwindows" };
 
-var effect = new ReaPack() { Name = "Airwindows Bright Ambience 3", Desc = "Reverb" };
+var effect = new ReaPack() { Name = "Airwindows Bright Ambience 3"};
 effect.Versions.Add(new Version()
 {
 	Name = "0.2",
@@ -17,74 +17,74 @@ effect.Versions.Add(new Version()
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows Console7", Desc = "Saturation" };
+effect = new ReaPack() { Name = "Airwindows Console7" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.1",
 	ChangeLog = "initial port from GitHub commit 558b93e",
 	Source = new Source("airwindows-console7.jsfx"),
-	Time = "2022-05-02"
+	Time = "2022-05-02T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows Galactic", Desc = "Reverb" };
+effect = new ReaPack() { Name = "Airwindows Galactic" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.1",
 	ChangeLog = "initial port from GitHub commit 558b93e",
 	Source = new Source("airwindows-galactic.jsfx"),
-	Time = "2022-05-02"
+	Time = "2022-05-02T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows PurestAir", Desc = "EQ" };
+effect = new ReaPack() { Name = "Airwindows PurestAir" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.1",
 	ChangeLog = "initial port from GitHub commit 558b93e",
 	Source = new Source("airwindows-purest-air.jsfx"),
-	Time = "2022-05-02"
+	Time = "2022-05-02T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows PurestGain", Desc = "Gain" };
+effect = new ReaPack() { Name = "Airwindows PurestGain" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.1",
 	ChangeLog = "initial port from GitHub commit 558b93e",
 	Source = new Source("airwindows-purest-gain.jsfx"),
-	Time = "2022-05-02"
+	Time = "2022-05-02T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
 
-effect = new ReaPack() { Name = "Airwindows NC-17", Desc = "Loudness" };
+effect = new ReaPack() { Name = "Airwindows NC-17" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.2",
 	ChangeLog = "improved bit shifting for random number",
 	Source = new Source("airwindows-nc-17.jsfx"),
-	Time = "2022-05-06"
+	Time = "2022-05-06T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows ToTape6", Desc = "Tape" };
+effect = new ReaPack() { Name = "Airwindows ToTape6" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.3",
 	ChangeLog = "improved bit shifting for random number",
 	Source = new Source("airwindows-totape6.jsfx"),
-	Time = "2022-05-06"
+	Time = "2022-05-06T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
-effect = new ReaPack() { Name = "Airwindows Verbity", Desc = "Reverb" };
+effect = new ReaPack() { Name = "Airwindows Verbity" };
 effect.Versions.Add(new Version()
 {
 	Name = "0.2",
 	ChangeLog = "improved bit shifting for random number",
 	Source = new Source("airwindows-verbity.jsfx"),
-	Time = "2022-05-06"
+	Time = "2022-05-06T13:00:00+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
@@ -114,9 +114,8 @@ result.Dump();
 }
 
 public class ReaPack {
-	[XmlAttribute("name")] public string Name { get; set; }
-	[XmlAttribute("type")] public string Type { get; set; } = "effect";
-	[XmlAttribute("desc")] public string Desc { get; set; }
+	[XmlAttribute("name")] public string Name { get; set; } // if there is a desc attribute, that is shown in ReaPack UI instead, we'll use name
+	[XmlAttribute("type")] public string Type { get; set; } = "effect";	
 	[XmlElement("version")] public List<Version> Versions { get; } = new List<Version>();
 }
 
