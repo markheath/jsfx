@@ -103,7 +103,7 @@ result.Dump();
 
 
 [XmlRoot("index")] public class Index {
-	[XmlAttribute("version")] public int Version { get; } = 1;
+	[XmlAttribute("version")] public int Version { get; set; } = 1;
 	[XmlAttribute("name")] public string Name { get; set; }
 	[XmlElement("category")] public List<Category> Categories { get; } = new List<Category>();
 }
@@ -122,7 +122,7 @@ public class ReaPack {
 
 public class Version {
 	[XmlAttribute("name")] public string Name { get; set; }
-	[XmlAttribute("author")] public string Author { get; } = "Mark Heath";
+	[XmlAttribute("author")] public string Author { get; set; } = "Mark Heath";
 	[XmlAttribute("time")] public string Time { get; set; }
 	[XmlElement("changelog")]public string ChangeLog { get; set; } // might need to use CData
 	[XmlElement("source")] public Source Source { get; set; } // n.b. can have multiple files
