@@ -1,0 +1,25 @@
+desc:MIDI Channel Filter
+//tags: MIDI processing filter
+//author: Mark Heath
+// explanation - removes all MIDI notes not on the channel to keep
+
+slider1:1<1,16,1>MIDI Channel to keep
+
+in_pin:none
+out_pin:none
+
+@slider
+chan = (slider1|0)-1;
+
+@block
+
+while (
+  midirecv(mpos, msg1, msg23) ? (
+    inch=msg1&15;
+    cmd=msg1>>4;
+    ((cmd==15) | (chan==inch)) ? (
+        midisend(mpos, msg1, msg23);
+    );
+    1;
+  );
+);

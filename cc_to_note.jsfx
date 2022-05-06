@@ -1,0 +1,52 @@
+// Effect from Tale: https://forum.cockos.com/showpost.php?p=1107148&postcount=6
+desc:MIDI CC to Note On/Off
+
+slider1:77<0,119,1>CC
+slider2:64<0,127,1>Threshold
+slider3:69<0,127,1>Note
+
+@slider
+
+cc    = max(0, min(119, floor(slider1)));
+thres = max(0, min(127, floor(slider2)));
+note  = max(0, min(127, floor(slider3)));
+
+@block
+
+// Receive all MIDI messages for the next sample block.
+while(
+  midirecv(ofs, msg1, msg23) ? (
+
+    msg = msg1 & 0xF0;
+    ch = msg1 & 0x0F;
+    no = msg23 & 0x7F;
+    val = msg23 >> 8;
+
+    // Is the MIDI message a CC message, and...
+    msg == 0xB0 &&
+    // ... is it the selected CC?
+    no == cc ? (
+
+      // Is the CC value above the threshold, and...
+      val >= thres &&
+      // ... has the Note On message not been sent yet?
+      !note_on ? (
+        // Send the Note On message.
+        midisend(ofs, 0x90 | ch, note | 0x4000);
+        note_on = 1;
+      ) :
+
+      // Is the CC value below the threshold, and...
+      val < thres &&
+      // ... has the Note On message previously been sent?
+      note_on ? (
+        // Send the Note Off message.
+        midisend(ofs, 0x80 | ch, note | 0x4000);
+        note_on = 0;
+      );
+    );
+
+    // Send the original MIDI message to the next plug in the FX chain.
+    midisend(ofs, msg1, msg23);
+  );
+);

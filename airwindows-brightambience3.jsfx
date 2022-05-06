@@ -1,0 +1,1208 @@
+desc:Airwindows Bright Ambience 3 (Mark Heath)
+
+// https://github.com/airwindows/airwindows/blob/master/plugins/WinVST/BrightAmbience3/BrightAmbience3Proc.cpp
+// original code Copyright (c) 2016 airwindows, All rights reserved
+// license: MIT
+// version history:
+// 0.1 29 Apr 2022 - initial port from GitHub commit 558b93e
+// 0.2 6 May 2022 - improved bit shifting for random number
+
+//tags: reverb
+//author: Mark Heath
+
+// https://www.airwindows.com/brightambience3/
+
+// default<min, max, increment>
+slider1:1<0,1,0.01>Start
+slider2:0<0,1,0.01>Length
+slider3:0<0,1,0.01>Feedback
+slider4:1<0,1,0.01>Dry/Wet
+
+in_pin:left input
+in_pin:right input
+out_pin:left output
+out_pin:right output
+
+@init
+
+
+freemem = 0;
+pL = freemem; freemem+=32768;
+pR = freemem; freemem+=32768;
+figureL = freemem; freemem+=9;
+figureR = freemem; freemem+=9;
+lastRefL = freemem; freemem+=10;
+lastRefR = freemem; freemem+=10;
+
+biquadAR = freemem; freemem+=9;
+biquadBR = freemem; freemem+=9;
+biquadCR = freemem; freemem+=9;
+biquadDR = freemem; freemem+=9;
+primeL = freemem; freemem+=490;
+primeR = freemem; freemem+=490;
+
+overallscale = 1.0;
+overallscale /= 44100.0;
+overallscale *= srate;
+
+const1 = 1.18*10^-23; // 1.18e-23;
+const2 = 1.18*10^-17; // 1.18e-17
+M_PI = 3.1415926535897932384626433;
+UINT32_MAX = 4294967295;
+
+primeL[0]=5; 
+primeL[1]=5; 
+primeL[2]=13; 
+primeL[3]=17; 
+primeL[4]=37; 
+primeL[5]=41; 
+primeL[6]=61; 
+primeL[7]=67; 
+primeL[8]=89; 
+primeL[9]=109; 
+primeL[10]=131; 
+primeL[11]=157; 
+primeL[12]=181; 
+primeL[13]=191; 
+primeL[14]=223; 
+primeL[15]=241; 
+primeL[16]=281; 
+primeL[17]=283; 
+primeL[18]=337; 
+primeL[19]=353; 
+primeL[20]=373; 
+primeL[21]=401; 
+primeL[22]=433; 
+primeL[23]=461; 
+primeL[24]=521; 
+primeL[25]=547; 
+primeL[26]=569; 
+primeL[27]=587; 
+primeL[28]=601; 
+primeL[29]=617; 
+primeL[30]=719; 
+primeL[31]=739; 
+primeL[32]=787; 
+primeL[33]=797; 
+primeL[34]=863; 
+primeL[35]=877; 
+primeL[36]=929; 
+primeL[37]=967; 
+primeL[38]=997; 
+primeL[39]=1031; 
+primeL[40]=1069; 
+primeL[41]=1087; 
+primeL[42]=1163; 
+primeL[43]=1171; 
+primeL[44]=1213; 
+primeL[45]=1217; 
+primeL[46]=1301; 
+primeL[47]=1409; 
+primeL[48]=1439; 
+primeL[49]=1447; 
+primeL[50]=1481; 
+primeL[51]=1499; 
+primeL[52]=1531; 
+primeL[53]=1597; 
+primeL[54]=1627; 
+primeL[55]=1669; 
+primeL[56]=1733; 
+primeL[57]=1741; 
+primeL[58]=1789; 
+primeL[59]=1823; 
+primeL[60]=1861; 
+primeL[61]=1913; 
+primeL[62]=2029; 
+primeL[63]=2063; 
+primeL[64]=2083; 
+primeL[65]=2099; 
+primeL[66]=2237; 
+primeL[67]=2269; 
+primeL[68]=2347; 
+primeL[69]=2351; 
+primeL[70]=2383; 
+primeL[71]=2417; 
+primeL[72]=2503; 
+primeL[73]=2549; 
+primeL[74]=2617; 
+primeL[75]=2647; 
+primeL[76]=2687; 
+primeL[77]=2719; 
+primeL[78]=2753; 
+primeL[79]=2803; 
+primeL[80]=2903; 
+primeL[81]=2909; 
+primeL[82]=3011; 
+primeL[83]=3019; 
+primeL[84]=3079; 
+primeL[85]=3109; 
+primeL[86]=3181; 
+primeL[87]=3229; 
+primeL[88]=3271; 
+primeL[89]=3299; 
+primeL[90]=3323; 
+primeL[91]=3407; 
+primeL[92]=3491; 
+primeL[93]=3517; 
+primeL[94]=3571; 
+primeL[95]=3593; 
+primeL[96]=3643; 
+primeL[97]=3733; 
+primeL[98]=3767; 
+primeL[99]=3911; 
+primeL[100]=3947; 
+primeL[101]=4027; 
+primeL[102]=4093; 
+primeL[103]=4133; 
+primeL[104]=4157; 
+primeL[105]=4217; 
+primeL[106]=4283; 
+primeL[107]=4339; 
+primeL[108]=4409; 
+primeL[109]=4421; 
+primeL[110]=4481; 
+primeL[111]=4517; 
+primeL[112]=4561; 
+primeL[113]=4567; 
+primeL[114]=4673; 
+primeL[115]=4759; 
+primeL[116]=4789; 
+primeL[117]=4801; 
+primeL[118]=4889; 
+primeL[119]=4933; 
+primeL[120]=4951; 
+primeL[121]=5021; 
+primeL[122]=5077; 
+primeL[123]=5107; 
+primeL[124]=5197; 
+primeL[125]=5281; 
+primeL[126]=5387; 
+primeL[127]=5441; 
+primeL[128]=5507; 
+primeL[129]=5557; 
+primeL[130]=5639; 
+primeL[131]=5651; 
+primeL[132]=5711; 
+primeL[133]=5749; 
+primeL[134]=5807; 
+primeL[135]=5851; 
+primeL[136]=5879; 
+primeL[137]=6037; 
+primeL[138]=6121; 
+primeL[139]=6217; 
+primeL[140]=6247; 
+primeL[141]=6311; 
+primeL[142]=6329; 
+primeL[143]=6353; 
+primeL[144]=6367; 
+primeL[145]=6469; 
+primeL[146]=6607; 
+primeL[147]=6653; 
+primeL[148]=6673; 
+primeL[149]=6691; 
+primeL[150]=6827; 
+primeL[151]=6841; 
+primeL[152]=6869; 
+primeL[153]=6899; 
+primeL[154]=7069; 
+primeL[155]=7109; 
+primeL[156]=7207; 
+primeL[157]=7283; 
+primeL[158]=7369; 
+primeL[159]=7417; 
+primeL[160]=7487; 
+primeL[161]=7523; 
+primeL[162]=7621; 
+primeL[163]=7649; 
+primeL[164]=7703; 
+primeL[165]=7753; 
+primeL[166]=7853; 
+primeL[167]=7883; 
+primeL[168]=8017; 
+primeL[169]=8059; 
+primeL[170]=8111; 
+primeL[171]=8117; 
+primeL[172]=8231; 
+primeL[173]=8233; 
+primeL[174]=8291; 
+primeL[175]=8377; 
+primeL[176]=8419; 
+primeL[177]=8513; 
+primeL[178]=8537; 
+primeL[179]=8581; 
+primeL[180]=8731; 
+primeL[181]=8747; 
+primeL[182]=8779; 
+primeL[183]=8807; 
+primeL[184]=8861; 
+primeL[185]=8923; 
+primeL[186]=9001; 
+primeL[187]=9041; 
+primeL[188]=9109; 
+primeL[189]=9293; 
+primeL[190]=9323; 
+primeL[191]=9403; 
+primeL[192]=9463; 
+primeL[193]=9539; 
+primeL[194]=9623; 
+primeL[195]=9661; 
+primeL[196]=9743; 
+primeL[197]=9833; 
+primeL[198]=9871; 
+primeL[199]=9923; 
+primeL[200]=10007; 
+primeL[201]=10009; 
+primeL[202]=10091; 
+primeL[203]=10169; 
+primeL[204]=10271; 
+primeL[205]=10433; 
+primeL[206]=10459; 
+primeL[207]=10487; 
+primeL[208]=10567; 
+primeL[209]=10589; 
+primeL[210]=10639; 
+primeL[211]=10663; 
+primeL[212]=10691; 
+primeL[213]=10723; 
+primeL[214]=10859; 
+primeL[215]=10861; 
+primeL[216]=10937; 
+primeL[217]=11257; 
+primeL[218]=11317; 
+primeL[219]=11369; 
+primeL[220]=11467; 
+primeL[221]=11633; 
+primeL[222]=11777; 
+primeL[223]=11867; 
+primeL[224]=11923; 
+primeL[225]=11927; 
+primeL[226]=11959; 
+primeL[227]=12007; 
+primeL[228]=12101; 
+primeL[229]=12113; 
+primeL[230]=12149; 
+primeL[231]=12203; 
+primeL[232]=12323; 
+primeL[233]=12409; 
+primeL[234]=12433; 
+primeL[235]=12457; 
+primeL[236]=12487; 
+primeL[237]=12503; 
+primeL[238]=12553; 
+primeL[239]=12647; 
+primeL[240]=12781; 
+primeL[241]=12841; 
+primeL[242]=12967; 
+primeL[243]=13003; 
+primeL[244]=13043; 
+primeL[245]=13103; 
+primeL[246]=13177; 
+primeL[247]=13217; 
+primeL[248]=13307; 
+primeL[249]=13331; 
+primeL[250]=13477; 
+primeL[251]=13513; 
+primeL[252]=13597; 
+primeL[253]=13613; 
+primeL[254]=13669; 
+primeL[255]=13693; 
+primeL[256]=13711; 
+primeL[257]=13757; 
+primeL[258]=13873; 
+primeL[259]=14051; 
+primeL[260]=14143; 
+primeL[261]=14159; 
+primeL[262]=14197; 
+primeL[263]=14437; 
+primeL[264]=14489; 
+primeL[265]=14503; 
+primeL[266]=14593; 
+primeL[267]=14713; 
+primeL[268]=14731; 
+primeL[269]=14783; 
+primeL[270]=14869; 
+primeL[271]=14923; 
+primeL[272]=14983; 
+primeL[273]=15061; 
+primeL[274]=15233; 
+primeL[275]=15271; 
+primeL[276]=15307; 
+primeL[277]=15313; 
+primeL[278]=15427; 
+primeL[279]=15511; 
+primeL[280]=15643; 
+primeL[281]=15683; 
+primeL[282]=15859; 
+primeL[283]=15973; 
+primeL[284]=16063; 
+primeL[285]=16073; 
+primeL[286]=16097; 
+primeL[287]=16127; 
+primeL[288]=16183; 
+primeL[289]=16253; 
+primeL[290]=16417; 
+primeL[291]=16451; 
+primeL[292]=16529; 
+primeL[293]=16693; 
+primeL[294]=16729; 
+primeL[295]=16901; 
+primeL[296]=16927; 
+primeL[297]=17117; 
+primeL[298]=17191; 
+primeL[299]=17291; 
+primeL[300]=17341; 
+primeL[301]=17377; 
+primeL[302]=17389; 
+primeL[303]=17417; 
+primeL[304]=17489; 
+primeL[305]=17539; 
+primeL[306]=17657; 
+primeL[307]=17659; 
+primeL[308]=17783; 
+primeL[309]=17911; 
+primeL[310]=17989; 
+primeL[311]=18049; 
+primeL[312]=18169; 
+primeL[313]=18181; 
+primeL[314]=18223; 
+primeL[315]=18229; 
+primeL[316]=18313; 
+primeL[317]=18433; 
+primeL[318]=18451; 
+primeL[319]=18617; 
+primeL[320]=18671; 
+primeL[321]=18719; 
+primeL[322]=18773; 
+primeL[323]=18787; 
+primeL[324]=18919; 
+primeL[325]=19013; 
+primeL[326]=19219; 
+primeL[327]=19433; 
+primeL[328]=19469; 
+primeL[329]=19501; 
+primeL[330]=19583; 
+primeL[331]=19759; 
+primeL[332]=19793; 
+primeL[333]=19819; 
+primeL[334]=19919; 
+primeL[335]=20047; 
+primeL[336]=20071; 
+primeL[337]=20107; 
+primeL[338]=20173; 
+primeL[339]=20231; 
+primeL[340]=20323; 
+primeL[341]=20341; 
+primeL[342]=20443; 
+primeL[343]=20477; 
+primeL[344]=20731; 
+primeL[345]=20759; 
+primeL[346]=20789; 
+primeL[347]=20873; 
+primeL[348]=20903; 
+primeL[349]=20959; 
+primeL[350]=21101; 
+primeL[351]=21149; 
+primeL[352]=21187; 
+primeL[353]=21191; 
+primeL[354]=21277; 
+primeL[355]=21317; 
+primeL[356]=21383; 
+primeL[357]=21493; 
+primeL[358]=21557; 
+primeL[359]=21587; 
+primeL[360]=21737; 
+primeL[361]=21757; 
+primeL[362]=21821; 
+primeL[363]=21937; 
+primeL[364]=22031; 
+primeL[365]=22067; 
+primeL[366]=22109; 
+primeL[367]=22367; 
+primeL[368]=22567; 
+primeL[369]=22651; 
+primeL[370]=22727; 
+primeL[371]=22751; 
+primeL[372]=22817; 
+primeL[373]=22853; 
+primeL[374]=22921; 
+primeL[375]=23087; 
+primeL[376]=23227; 
+primeL[377]=23251; 
+primeL[378]=23447; 
+primeL[379]=23539; 
+primeL[380]=23567; 
+primeL[381]=23669; 
+primeL[382]=23813; 
+primeL[383]=23887; 
+primeL[384]=23909; 
+primeL[385]=23929; 
+primeL[386]=24023; 
+primeL[387]=24071; 
+primeL[388]=24109; 
+primeL[389]=24137; 
+primeL[390]=24151; 
+primeL[391]=24203; 
+primeL[392]=24251; 
+primeL[393]=24391; 
+primeL[394]=24419; 
+primeL[395]=24443; 
+primeL[396]=24509; 
+primeL[397]=24659; 
+primeL[398]=24671; 
+primeL[399]=24793; 
+primeL[400]=24859; 
+primeL[401]=24919; 
+primeL[402]=25057; 
+primeL[403]=25169; 
+primeL[404]=25301; 
+primeL[405]=25309; 
+primeL[406]=25357; 
+primeL[407]=25411; 
+primeL[408]=25423; 
+primeL[409]=25603; 
+primeL[410]=25733; 
+primeL[411]=25771; 
+primeL[412]=25841; 
+primeL[413]=25931; 
+primeL[414]=25969; 
+primeL[415]=26017; 
+primeL[416]=26189; 
+primeL[417]=26267; 
+primeL[418]=26371; 
+primeL[419]=26431; 
+primeL[420]=26489; 
+primeL[421]=26597; 
+primeL[422]=26693; 
+primeL[423]=26801; 
+primeL[424]=26921; 
+primeL[425]=26959; 
+primeL[426]=27017; 
+primeL[427]=27077; 
+primeL[428]=27091; 
+primeL[429]=27449; 
+primeL[430]=27457; 
+primeL[431]=27583; 
+primeL[432]=27689; 
+primeL[433]=27737; 
+primeL[434]=27809; 
+primeL[435]=27851; 
+primeL[436]=27943; 
+primeL[437]=28069; 
+primeL[438]=28109; 
+primeL[439]=28283; 
+primeL[440]=28307; 
+primeL[441]=28403; 
+primeL[442]=28573; 
+primeL[443]=28649; 
+primeL[444]=28657; 
+primeL[445]=28813; 
+primeL[446]=29101; 
+primeL[447]=29147; 
+primeL[448]=29153; 
+primeL[449]=29287; 
+primeL[450]=29333; 
+primeL[451]=29387; 
+primeL[452]=29483; 
+primeL[453]=29573; 
+primeL[454]=29641; 
+primeL[455]=29717; 
+primeL[456]=29803; 
+primeL[457]=30089; 
+primeL[458]=30091; 
+primeL[459]=30119; 
+primeL[460]=30133; 
+primeL[461]=30259; 
+primeL[462]=30557; 
+primeL[463]=30593; 
+primeL[464]=30661; 
+primeL[465]=30713; 
+primeL[466]=30781; 
+primeL[467]=30839; 
+primeL[468]=30869; 
+primeL[469]=30893; 
+primeL[470]=31033; 
+primeL[471]=31079; 
+primeL[472]=31181; 
+primeL[473]=31193; 
+primeL[474]=31267; 
+primeL[475]=31307; 
+primeL[476]=31489; 
+primeL[477]=31517; 
+primeL[478]=31667; 
+primeL[479]=31741; 
+primeL[480]=32003; 
+primeL[481]=32159; 
+primeL[482]=32233; 
+primeL[483]=32297; 
+primeL[484]=32299; 
+primeL[485]=32327; 
+primeL[486]=32341; 
+primeL[487]=32537; 
+primeL[488]=32603; 
+primeL[489]=32749; 
+
+primeR[0]=3; 
+primeR[1]=7; 
+primeR[2]=11; 
+primeR[3]=19; 
+primeR[4]=31; 
+primeR[5]=43; 
+primeR[6]=59; 
+primeR[7]=71; 
+primeR[8]=83; 
+primeR[9]=113; 
+primeR[10]=127; 
+primeR[11]=163; 
+primeR[12]=179; 
+primeR[13]=193; 
+primeR[14]=211; 
+primeR[15]=251; 
+primeR[16]=277; 
+primeR[17]=293; 
+primeR[18]=331; 
+primeR[19]=359; 
+primeR[20]=367; 
+primeR[21]=409; 
+primeR[22]=431; 
+primeR[23]=463; 
+primeR[24]=509; 
+primeR[25]=557; 
+primeR[26]=563; 
+primeR[27]=593; 
+primeR[28]=599; 
+primeR[29]=619; 
+primeR[30]=709; 
+primeR[31]=743; 
+primeR[32]=773; 
+primeR[33]=809; 
+primeR[34]=859; 
+primeR[35]=881; 
+primeR[36]=919; 
+primeR[37]=971; 
+primeR[38]=991; 
+primeR[39]=1033; 
+primeR[40]=1063; 
+primeR[41]=1091; 
+primeR[42]=1153; 
+primeR[43]=1181; 
+primeR[44]=1201; 
+primeR[45]=1223; 
+primeR[46]=1297; 
+primeR[47]=1423; 
+primeR[48]=1433; 
+primeR[49]=1451; 
+primeR[50]=1471; 
+primeR[51]=1511; 
+primeR[52]=1523; 
+primeR[53]=1601; 
+primeR[54]=1621; 
+primeR[55]=1693; 
+primeR[56]=1723; 
+primeR[57]=1747; 
+primeR[58]=1787; 
+primeR[59]=1831; 
+primeR[60]=1847; 
+primeR[61]=1931; 
+primeR[62]=2027; 
+primeR[63]=2069; 
+primeR[64]=2081; 
+primeR[65]=2111; 
+primeR[66]=2221; 
+primeR[67]=2273; 
+primeR[68]=2341; 
+primeR[69]=2357; 
+primeR[70]=2381; 
+primeR[71]=2423; 
+primeR[72]=2477; 
+primeR[73]=2551; 
+primeR[74]=2609; 
+primeR[75]=2657; 
+primeR[76]=2683; 
+primeR[77]=2729; 
+primeR[78]=2749; 
+primeR[79]=2819; 
+primeR[80]=2897; 
+primeR[81]=2917; 
+primeR[82]=3001; 
+primeR[83]=3023; 
+primeR[84]=3067; 
+primeR[85]=3119; 
+primeR[86]=3169; 
+primeR[87]=3251; 
+primeR[88]=3259; 
+primeR[89]=3301; 
+primeR[90]=3319; 
+primeR[91]=3413; 
+primeR[92]=3469; 
+primeR[93]=3527; 
+primeR[94]=3559; 
+primeR[95]=3607; 
+primeR[96]=3637; 
+primeR[97]=3739; 
+primeR[98]=3761; 
+primeR[99]=3917; 
+primeR[100]=3943; 
+primeR[101]=4049; 
+primeR[102]=4091; 
+primeR[103]=4139; 
+primeR[104]=4153; 
+primeR[105]=4219; 
+primeR[106]=4273; 
+primeR[107]=4349; 
+primeR[108]=4397; 
+primeR[109]=4423; 
+primeR[110]=4463; 
+primeR[111]=4519; 
+primeR[112]=4549; 
+primeR[113]=4583; 
+primeR[114]=4663; 
+primeR[115]=4783; 
+primeR[116]=4787; 
+primeR[117]=4813; 
+primeR[118]=4877; 
+primeR[119]=4937; 
+primeR[120]=4943; 
+primeR[121]=5023; 
+primeR[122]=5059; 
+primeR[123]=5113; 
+primeR[124]=5189; 
+primeR[125]=5297; 
+primeR[126]=5381; 
+primeR[127]=5443; 
+primeR[128]=5503; 
+primeR[129]=5563; 
+primeR[130]=5623; 
+primeR[131]=5653; 
+primeR[132]=5701; 
+primeR[133]=5779; 
+primeR[134]=5801; 
+primeR[135]=5857; 
+primeR[136]=5869; 
+primeR[137]=6043; 
+primeR[138]=6113; 
+primeR[139]=6221; 
+primeR[140]=6229; 
+primeR[141]=6317; 
+primeR[142]=6323; 
+primeR[143]=6359; 
+primeR[144]=6361; 
+primeR[145]=6473; 
+primeR[146]=6599; 
+primeR[147]=6659; 
+primeR[148]=6661; 
+primeR[149]=6701; 
+primeR[150]=6823; 
+primeR[151]=6857; 
+primeR[152]=6863; 
+primeR[153]=6907; 
+primeR[154]=7057; 
+primeR[155]=7121; 
+primeR[156]=7193; 
+primeR[157]=7297; 
+primeR[158]=7351; 
+primeR[159]=7433; 
+primeR[160]=7481; 
+primeR[161]=7529; 
+primeR[162]=7607; 
+primeR[163]=7669; 
+primeR[164]=7699; 
+primeR[165]=7757; 
+primeR[166]=7841; 
+primeR[167]=7901; 
+primeR[168]=8011; 
+primeR[169]=8069; 
+primeR[170]=8101; 
+primeR[171]=8123; 
+primeR[172]=8221; 
+primeR[173]=8237; 
+primeR[174]=8287; 
+primeR[175]=8387; 
+primeR[176]=8389; 
+primeR[177]=8521; 
+primeR[178]=8527; 
+primeR[179]=8597; 
+primeR[180]=8719; 
+primeR[181]=8753; 
+primeR[182]=8761; 
+primeR[183]=8819; 
+primeR[184]=8849; 
+primeR[185]=8929; 
+primeR[186]=8999; 
+primeR[187]=9043; 
+primeR[188]=9103; 
+primeR[189]=9311; 
+primeR[190]=9319; 
+primeR[191]=9413; 
+primeR[192]=9461; 
+primeR[193]=9547; 
+primeR[194]=9619; 
+primeR[195]=9677; 
+primeR[196]=9739; 
+primeR[197]=9839; 
+primeR[198]=9859; 
+primeR[199]=9929; 
+primeR[200]=9973; 
+primeR[201]=10037; 
+primeR[202]=10079; 
+primeR[203]=10177; 
+primeR[204]=10267; 
+primeR[205]=10453; 
+primeR[206]=10457; 
+primeR[207]=10499; 
+primeR[208]=10559; 
+primeR[209]=10597; 
+primeR[210]=10631; 
+primeR[211]=10667; 
+primeR[212]=10687; 
+primeR[213]=10729; 
+primeR[214]=10853; 
+primeR[215]=10867; 
+primeR[216]=10909; 
+primeR[217]=11261; 
+primeR[218]=11311; 
+primeR[219]=11383; 
+primeR[220]=11447; 
+primeR[221]=11657; 
+primeR[222]=11743; 
+primeR[223]=11887; 
+primeR[224]=11909; 
+primeR[225]=11933; 
+primeR[226]=11953; 
+primeR[227]=12011; 
+primeR[228]=12097; 
+primeR[229]=12119; 
+primeR[230]=12143; 
+primeR[231]=12211; 
+primeR[232]=12301; 
+primeR[233]=12413; 
+primeR[234]=12421; 
+primeR[235]=12473; 
+primeR[236]=12479; 
+primeR[237]=12511; 
+primeR[238]=12547; 
+primeR[239]=12653; 
+primeR[240]=12763; 
+primeR[241]=12853; 
+primeR[242]=12959; 
+primeR[243]=13007; 
+primeR[244]=13037; 
+primeR[245]=13109; 
+primeR[246]=13171; 
+primeR[247]=13219; 
+primeR[248]=13297; 
+primeR[249]=13337; 
+primeR[250]=13469; 
+primeR[251]=13523; 
+primeR[252]=13591; 
+primeR[253]=13619; 
+primeR[254]=13649; 
+primeR[255]=13697; 
+primeR[256]=13709; 
+primeR[257]=13759; 
+primeR[258]=13859; 
+primeR[259]=14057; 
+primeR[260]=14107; 
+primeR[261]=14173; 
+primeR[262]=14177; 
+primeR[263]=14447; 
+primeR[264]=14479; 
+primeR[265]=14519; 
+primeR[266]=14591; 
+primeR[267]=14717; 
+primeR[268]=14723; 
+primeR[269]=14797; 
+primeR[270]=14867; 
+primeR[271]=14929; 
+primeR[272]=14969; 
+primeR[273]=15073; 
+primeR[274]=15227; 
+primeR[275]=15277; 
+primeR[276]=15299; 
+primeR[277]=15319; 
+primeR[278]=15413; 
+primeR[279]=15527; 
+primeR[280]=15641; 
+primeR[281]=15727; 
+primeR[282]=15823; 
+primeR[283]=15991; 
+primeR[284]=16061; 
+primeR[285]=16087; 
+primeR[286]=16091; 
+primeR[287]=16139; 
+primeR[288]=16141; 
+primeR[289]=16267; 
+primeR[290]=16411; 
+primeR[291]=16453; 
+primeR[292]=16519; 
+primeR[293]=16699; 
+primeR[294]=16703; 
+primeR[295]=16903; 
+primeR[296]=16921; 
+primeR[297]=17123; 
+primeR[298]=17189; 
+primeR[299]=17293; 
+primeR[300]=17333; 
+primeR[301]=17383; 
+primeR[302]=17387; 
+primeR[303]=17419; 
+primeR[304]=17483; 
+primeR[305]=17551; 
+primeR[306]=17627; 
+primeR[307]=17669; 
+primeR[308]=17761; 
+primeR[309]=17921; 
+primeR[310]=17987; 
+primeR[311]=18059; 
+primeR[312]=18149; 
+primeR[313]=18191; 
+primeR[314]=18217; 
+primeR[315]=18233; 
+primeR[316]=18311; 
+primeR[317]=18439; 
+primeR[318]=18443; 
+primeR[319]=18637; 
+primeR[320]=18661; 
+primeR[321]=18731; 
+primeR[322]=18757; 
+primeR[323]=18793; 
+primeR[324]=18917; 
+primeR[325]=19031; 
+primeR[326]=19213; 
+primeR[327]=19441; 
+primeR[328]=19463; 
+primeR[329]=19507; 
+primeR[330]=19577; 
+primeR[331]=19763; 
+primeR[332]=19777; 
+primeR[333]=19841; 
+primeR[334]=19913; 
+primeR[335]=20051; 
+primeR[336]=20063; 
+primeR[337]=20113; 
+primeR[338]=20161; 
+primeR[339]=20233; 
+primeR[340]=20297; 
+primeR[341]=20347; 
+primeR[342]=20441; 
+primeR[343]=20479; 
+primeR[344]=20719; 
+primeR[345]=20771; 
+primeR[346]=20773; 
+primeR[347]=20879; 
+primeR[348]=20899; 
+primeR[349]=20963; 
+primeR[350]=21089; 
+primeR[351]=21157; 
+primeR[352]=21179; 
+primeR[353]=21193; 
+primeR[354]=21269; 
+primeR[355]=21319; 
+primeR[356]=21379; 
+primeR[357]=21499; 
+primeR[358]=21529; 
+primeR[359]=21589; 
+primeR[360]=21727; 
+primeR[361]=21767; 
+primeR[362]=21817; 
+primeR[363]=21943; 
+primeR[364]=22027; 
+primeR[365]=22073; 
+primeR[366]=22093; 
+primeR[367]=22369; 
+primeR[368]=22549; 
+primeR[369]=22669; 
+primeR[370]=22721; 
+primeR[371]=22769; 
+primeR[372]=22811; 
+primeR[373]=22859; 
+primeR[374]=22907; 
+primeR[375]=23099; 
+primeR[376]=23209; 
+primeR[377]=23269; 
+primeR[378]=23431; 
+primeR[379]=23549; 
+primeR[380]=23563; 
+primeR[381]=23671; 
+primeR[382]=23801; 
+primeR[383]=23893; 
+primeR[384]=23899; 
+primeR[385]=23957; 
+primeR[386]=24019; 
+primeR[387]=24077; 
+primeR[388]=24107; 
+primeR[389]=24133; 
+primeR[390]=24169; 
+primeR[391]=24197; 
+primeR[392]=24281; 
+primeR[393]=24379; 
+primeR[394]=24421; 
+primeR[395]=24439; 
+primeR[396]=24517; 
+primeR[397]=24631; 
+primeR[398]=24677; 
+primeR[399]=24781; 
+primeR[400]=24877; 
+primeR[401]=24917; 
+primeR[402]=25073; 
+primeR[403]=25163; 
+primeR[404]=25303; 
+primeR[405]=25307; 
+primeR[406]=25367; 
+primeR[407]=25409; 
+primeR[408]=25439; 
+primeR[409]=25601; 
+primeR[410]=25741; 
+primeR[411]=25763; 
+primeR[412]=25847; 
+primeR[413]=25919; 
+primeR[414]=25981; 
+primeR[415]=26003; 
+primeR[416]=26203; 
+primeR[417]=26263; 
+primeR[418]=26387; 
+primeR[419]=26423; 
+primeR[420]=26497; 
+primeR[421]=26591; 
+primeR[422]=26699; 
+primeR[423]=26783; 
+primeR[424]=26927; 
+primeR[425]=26953; 
+primeR[426]=27031; 
+primeR[427]=27073; 
+primeR[428]=27103; 
+primeR[429]=27437; 
+primeR[430]=27479; 
+primeR[431]=27581; 
+primeR[432]=27691; 
+primeR[433]=27733; 
+primeR[434]=27817; 
+primeR[435]=27847; 
+primeR[436]=27947; 
+primeR[437]=28057; 
+primeR[438]=28111; 
+primeR[439]=28279; 
+primeR[440]=28309; 
+primeR[441]=28393; 
+primeR[442]=28579; 
+primeR[443]=28643; 
+primeR[444]=28661; 
+primeR[445]=28807; 
+primeR[446]=29123; 
+primeR[447]=29137; 
+primeR[448]=29167; 
+primeR[449]=29269; 
+primeR[450]=29339; 
+primeR[451]=29383; 
+primeR[452]=29501; 
+primeR[453]=29569; 
+primeR[454]=29663; 
+primeR[455]=29683; 
+primeR[456]=29819; 
+primeR[457]=30071; 
+primeR[458]=30097; 
+primeR[459]=30113; 
+primeR[460]=30137; 
+primeR[461]=30253; 
+primeR[462]=30559; 
+primeR[463]=30577; 
+primeR[464]=30671; 
+primeR[465]=30707; 
+primeR[466]=30803; 
+primeR[467]=30829; 
+primeR[468]=30871; 
+primeR[469]=30881; 
+primeR[470]=31039; 
+primeR[471]=31069; 
+primeR[472]=31183; 
+primeR[473]=31189; 
+primeR[474]=31271; 
+primeR[475]=31277; 
+primeR[476]=31511; 
+primeR[477]=31513; 
+primeR[478]=31687; 
+primeR[479]=31729; 
+primeR[480]=32009; 
+primeR[481]=32143; 
+primeR[482]=32237; 
+primeR[483]=32261; 
+primeR[484]=32303; 
+primeR[485]=32323; 
+primeR[486]=32353; 
+primeR[487]=32533; 
+primeR[488]=32609; 
+primeR[489]=32719; 
+//these arrays go from 0 to primeL[489] = 32719 which is almost 32767
+
+fpdL = 1.0; while (fpdL = rand()*UINT32_MAX; fpdL < 16386; );
+fpdR = 1.0; while (fpdR = rand()*UINT32_MAX; fpdR < 16386; );
+//this is reset: values being initialized only once. Startup values, whatever they are.
+
+A = 1.0;
+B = 0.0;
+C = 0.0;
+D = 1.0;
+
+count = 0; loop(32767, pL[count] = 0.0; pR[count] = 0.0; count += 1;);
+feedbackA = feedbackB = 0.0;
+x = 0; loop(9, figureL[x] = 0.0; figureR[x] = 0.0; x += 1;);
+c = 0; loop(9, lastRefL[c] = 0.0;lastRefR[c] = 0.0; c += 1;);
+cycle = 0;
+gcount = 0;
+
+
+@slider
+A = slider1;
+B = slider2;
+C = slider3;
+D = slider4;
+
+
+@block
+cycleEnd = floor(overallscale);
+(cycleEnd < 1) ? cycleEnd = 1;
+(cycleEnd > 4) ? cycleEnd = 4;
+//this is going to be 2 for 88.1 or 96k, 3 for silly people, 4 for 176 or 192k
+(cycle > cycleEnd-1) ? cycle = cycleEnd-1; //sanity check  
+
+start = floor(A * 400)+88;
+length = floor(pow(B,2) * 487)+1;
+(start + length > 488) ? start = 488-length;
+feedbackAmount = C*0.25;
+wet = D;
+
+//[0] is frequency: 0.000001 to 0.499999 is near-zero to near-Nyquist
+//[1] is resonance, 0.7071 is Butterworth. Also can't be zero
+figureL[0] = figureR[0] = 1000.0/srate; //fixed frequency, 3.515775k
+figureL[1] = figureR[1] = pow(length*0.037*feedbackAmount,2)+0.01; //resonance
+K = tan(M_PI * figureR[0]);
+norm = 1.0 / (1.0 + K / figureR[1] + K * K);
+figureL[2] = figureR[2] = K / figureR[1] * norm;
+figureL[4] = figureR[4] = -figureR[2];
+figureL[5] = figureR[5] = 2.0 * (K * K - 1.0) * norm;
+figureL[6] = figureR[6] = (1.0 - K / figureR[1] + K * K) * norm;
+
+@sample
+
+inputSampleL = spl0;
+inputSampleR = spl1;
+
+(abs(inputSampleL)<const1) ? inputSampleL = fpdL * const2;
+(abs(inputSampleR)<const1) ? inputSampleR = fpdR * const2;
+drySampleL = inputSampleL;
+drySampleR = inputSampleR;
+    
+cycle+=1;
+(cycle == cycleEnd) ? ( //hit the end point and we do an Air sample
+  tempL = 0.0;
+  tempR = 0.0;
+  (gcount < 0 || gcount > 32767) ? gcount = 32767; 
+  count = gcount;
+  
+  pL[count] = inputSampleL + feedbackB;
+  pR[count] = inputSampleR + feedbackA;
+  
+  offset = start;
+  loop (length, 
+    tempL += pL[count+primeL[offset] - ((count+primeL[offset] > 32767)?32768:0)];
+    tempR += pR[count+primeR[offset] - ((count+primeR[offset] > 32767)?32768:0)];
+    offset+=1;
+  );
+  
+  // https://cplusplus.com/reference/cmath/cbrt/ is cube root
+  inputSampleL = tempL/pow(length, 1.0/3.0);
+  inputSampleR = tempR/pow(length, 1.0/3.0);
+  
+  tempSample = (inputSampleL * figureL[2]) + figureL[7];
+  figureL[7] = -(tempSample * figureL[5]) + figureL[8];
+  figureL[8] = (inputSampleL * figureL[4]) - (tempSample * figureL[6]);
+  feedbackA = sin(tempSample) * feedbackAmount;
+  
+  tempSample = (inputSampleR * figureR[2]) + figureR[7];
+  figureR[7] = -(tempSample * figureR[5]) + figureR[8];
+  figureR[8] = (inputSampleR * figureR[4]) - (tempSample * figureR[6]);
+  feedbackB = sin(tempSample) * feedbackAmount;
+  gcount-=1;
+  
+  (cycleEnd == 4) ? (
+    lastRefL[0] = lastRefL[4]; //start from previous last
+    lastRefL[2] = (lastRefL[0] + inputSampleL)/2; //half
+    lastRefL[1] = (lastRefL[0] + lastRefL[2])/2; //one quarter
+    lastRefL[3] = (lastRefL[2] + inputSampleL)/2; //three quarters
+    lastRefL[4] = inputSampleL; //full
+    lastRefR[0] = lastRefR[4]; //start from previous last
+    lastRefR[2] = (lastRefR[0] + inputSampleR)/2; //half
+    lastRefR[1] = (lastRefR[0] + lastRefR[2])/2; //one quarter
+    lastRefR[3] = (lastRefR[2] + inputSampleR)/2; //three quarters
+    lastRefR[4] = inputSampleR; //full
+  );
+  (cycleEnd == 3) ? (
+    lastRefL[0] = lastRefL[3]; //start from previous last
+    lastRefL[2] = (lastRefL[0]+lastRefL[0]+inputSampleL)/3; //third
+    lastRefL[1] = (lastRefL[0]+inputSampleL+inputSampleL)/3; //two thirds
+    lastRefL[3] = inputSampleL; //full
+    lastRefR[0] = lastRefR[3]; //start from previous last
+    lastRefR[2] = (lastRefR[0]+lastRefR[0]+inputSampleR)/3; //third
+    lastRefR[1] = (lastRefR[0]+inputSampleR+inputSampleR)/3; //two thirds
+    lastRefR[3] = inputSampleR; //full
+  );
+  (cycleEnd == 2) ? (
+    lastRefL[0] = lastRefL[2]; //start from previous last
+    lastRefL[1] = (lastRefL[0] + inputSampleL)/2; //half
+    lastRefL[2] = inputSampleL; //full
+    lastRefR[0] = lastRefR[2]; //start from previous last
+    lastRefR[1] = (lastRefR[0] + inputSampleR)/2; //half
+    lastRefR[2] = inputSampleR; //full
+  );
+  (cycleEnd == 1) ? (
+    lastRefL[0] = inputSampleL;
+    lastRefR[0] = inputSampleR;
+  );
+  cycle = 0; //reset
+  inputSampleL = lastRefL[cycle];
+  inputSampleR = lastRefR[cycle];
+ ) : (
+  inputSampleL = lastRefL[cycle];
+  inputSampleR = lastRefR[cycle];
+  //we are going through our references now
+);
+
+// switch (cycleEnd) //multi-pole average using lastRef[] variables
+(cycleEnd == 4) ? (
+  lastRefL[8] = inputSampleL; inputSampleL = (inputSampleL+lastRefL[7])*0.5;
+  lastRefL[7] = lastRefL[8]; //continue, do not break
+  lastRefR[8] = inputSampleR; inputSampleR = (inputSampleR+lastRefR[7])*0.5;
+  lastRefR[7] = lastRefR[8]; //continue, do not break
+) : 
+(cycleEnd == 3) ? (
+    lastRefL[8] = inputSampleL; inputSampleL = (inputSampleL+lastRefL[6])*0.5;
+    lastRefL[6] = lastRefL[8]; //continue, do not break
+    lastRefR[8] = inputSampleR; inputSampleR = (inputSampleR+lastRefR[6])*0.5;
+    lastRefR[6] = lastRefR[8]; //continue, do not break
+) : 
+(cycleEnd == 2) ? (
+    lastRefL[8] = inputSampleL; inputSampleL = (inputSampleL+lastRefL[5])*0.5;
+    lastRefL[5] = lastRefL[8]; //continue, do not break
+    lastRefR[8] = inputSampleR; inputSampleR = (inputSampleR+lastRefR[5])*0.5;
+    lastRefR[5] = lastRefR[8]; //continue, do not break
+) ;
+// case 1: break; //no further averaging
+
+(wet != 1.0) ? (
+  inputSampleL = (inputSampleL * wet) + (drySampleL * (1.0-wet));
+  inputSampleR = (inputSampleR * wet) + (drySampleR * (1.0-wet));
+);
+//Dry/Wet control, defaults to the last slider
+
+//begin 64 bit stereo floating point dither
+//int expon; frexp((double)inputSampleL, &expon);
+fpdL ~= fpdL << 13; fpdL ~= fpdL >> 17; fpdL ~= fpdL << 5;
+//inputSampleL += ((double(fpdL)-uint32_t(0x7fffffff)) * 1.1e-44l * pow(2,expon+62));
+//frexp((double)inputSampleR, &expon);
+fpdR ~= fpdR << 13; fpdR ~= fpdR >> 17; fpdR ~= fpdR << 5;
+//inputSampleR += ((double(fpdR)-uint32_t(0x7fffffff)) * 1.1e-44l * pow(2,expon+62));
+//end 64 bit stereo floating point dither
+(fpdL < 0) ? fpdL = 0x80000000 + (fpdL & 0x7FFFFFFF);
+(fpdR < 0) ? fpdR = 0x80000000 + (fpdR & 0x7FFFFFFF);
+
+spl0 = inputSampleL;
+spl1 = inputSampleR;
