@@ -1,0 +1,128 @@
+# v0.1 7 May 2022
+127 [Spikes] On Beat
+126 [Shaker] On Beat
+125 [Shaker] Off Beat
+124 [Cabasca] On Beat
+123 [Caxixi] On Beat
+122 [Caxixi] Off Beat
+121 [Shells] On Beat
+120 [Hi-Hat] Open
+119 [Hi-Hat] Closed
+118 [Ride] Mute
+117 [Bells] Sleigh Large
+116 [Bells] Sleigh Small
+115 [FX Box] Dry FX 1
+114 [FX Box] Dry FX 2
+113 [FX Box] Castanet
+112 [FX Box] Whip Single
+111 [FX Box] Whip Flam
+110 [FX Box] Bell Tree
+109 [FX Box] Chimes
+108 [FX Box] Lightning
+107 [FX Box] Thunder 1
+106 [FX Box] Thunder 2
+105 [FX Box] Ratchet
+104 [FX Box] Vibraslap
+103 [FX Box] Flexatone
+102 [FX Box] Rain Stick
+101 [FX Box] Ocean Side
+100 [FX Box] Ocean Sound
+99 [KD] Chromatic Bass
+98 [KD] Chromatic Bass
+97 [KD] Chromatic Bass
+96 [KD] Chromatic Bass
+95 [KD] Chromatic Bass
+94 [KD] Chromatic Bass
+93 [KD] Chromatic Bass
+92 [KD] Chromatic Bass
+91 [KD] Chromatic Bass
+90 [KD] Chromatic Bass
+89 [KD] Chromatic Bass
+88 [KD] Chromatic Bass
+87 [KD] Chromatic Bass
+86 [KD] Chromatic Bass
+85 [KD] Chromatic Bass
+84 [KD] Chromatic Bass
+83 [KD] Mute
+82 [Body Sounds] Stomps
+81 [Triangle] Open
+80 [Triangle] Muted
+79 [Woodblock] Block 5
+78 [Woodblock] Block 4
+77 [Woodblock] Block 3
+76 [Woodblock] Block 2
+75 [Woodblock] Block 1
+74 [Guiro] Long
+73 [Guiro] Short
+72 [Tribal] Bass Drum
+71 [Tribal] Boobam
+70 [Maracas] On Beat
+69 [Maracas] Off Beat
+68 [Body Sounds] Crowd Snaps
+67 [Body Sounds] Single Snaps
+66 [Body Sounds] Big Claps
+65 [Hi-Hat] Seq Hits
+64 [Hi-Hat] Closed Edge
+63 [Hi-Hat] Tight Tip
+62 [Hi-Hat] Tight Edge
+61 [Hi-Hat] Closed Tip
+60 [Hi-Hat] Open Max
+59 [Ride] Edge
+58 [Snaps]
+57 [Cymbal 1] Crashed
+56 [Cowbell]
+55 [Cymbal 3] Crashed
+54 [Tambourine] On Beat
+53 [Tambourine] Bell
+52 [Cymbal 1] Crashed
+51 [Ride] Bow
+50 [Cymbal 2] Muted
+49 [Cymbal 2] Crashed
+48 [Racktom] Center
+47 [Racktom] Center
+46 [Hats]{GM} Open
+45 [Racktom] Center
+44 [Hats]{GM} Pedal
+43 [Floortom] Center
+42 [Hats]{GM} Closed
+41 [Floortom] Center
+40 [Snare] Fat
+39 [Claps]
+38 [Snare] Center
+37 [Snare] Sidestick
+36 [Kick]
+35 [Kick] Long
+34 [Kick] Short
+33 [Snare] Small
+32 [Percussion] Hit
+31 [Crashes] Hit
+30 [FX Bell] Hit
+29 [Cymbal 3] Alias
+28 [Cymbal 2] Alias
+27 [Cymbal 1] Alias
+26 [Hats] Open 3
+25 [Hats] Open 2
+24 [Hats] Open 1
+23 [Hats] Open Pedal
+22 [Hats] Closed Edge
+21 [Hats] Closed Pedal
+20 [Hats] CC Variable
+19 [Hats] Alias
+18 [Hats] Alias
+17 [Bells] Gliss Fast
+16 [Bells] Gliss Slow
+15 [Bells] Single 5
+14 [Bells] Single 4
+13 [Bells] Single 3
+12 [Bells] Single 2
+11 [Bells] Single 1
+10 
+09 
+08 
+07 
+06 
+05 
+04 
+03 Tambourine
+02 Shaker
+01 One Shot / Clap

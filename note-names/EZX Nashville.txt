@@ -1,0 +1,59 @@
+# v0.1 7 May 2022
+9 Hats Bell Trig
+18 Hats Trig
+20 Hats Tip Trig
+21 Hats Closed Pedal
+22 Hats Closed Edge
+23 Hats Open Pedal
+24 Hats Open 1
+25 Hats Open 2
+26 Hats Open 3
+27 Cymbal 2 Crash Alias
+28 Cymbal 2 Crash Alias
+29 Ride Edge Alias
+30 Ride Edge Alias
+31 Cymbal 3 Crash Alias
+32 Cymbal 3 Crash Alias
+33 Snare Center Alt
+34 Kick Drum Hit Alias
+35 Kick Drum Hit Alias
+36 Kick Drum Hit
+37 Snare Sidestick
+38 Snare Center
+39 Snare Closed Rim
+40 Snare Rimshot
+41 Floor Tom alias
+42 Closed Hi-Hat
+43 Floor Tom Head
+44 Pedal Hi-Hat
+45 Rack Tom2 alias
+46 Open Hi-Hat
+47 Rack Tom 2 Head
+48 Rack Tom 1 Head
+49 Cymbal 2 Crash
+50 Cymbal 2 Mute
+51 Ride Cymbal Bow
+52 China Crash
+53 Ride Bell
+54 Cybal 2 Mute
+55 Cymbal 1 Crash
+56 Cymbal 1 Mute
+57 Cymbal 3 Crash
+58 Cymbal 3 mute
+59 Ride Edge Cymbal 
+60 Hats Open 4
+61 Hats Closed Tip
+62 Hats Tight Edge
+63 Hats Tight Tip
+64 Hats Seq Hard
+65 Hats Seq Soft
+66 Snare Muted Alt
+67 Snare Thumb [Fingers]
+68 Snare Muted
+69 Snare Index [Fingers]
+70 Snare Middle [Fingers]
+71 Snare Ring [Fingers]
+119 Hats Closed Bell
+120 Hats Open Bell 1
+121 Hats Open Bell 2
+

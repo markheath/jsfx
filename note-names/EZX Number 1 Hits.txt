@@ -1,0 +1,53 @@
+# v0.1 7 May 2022
+22 Hats 1 (closed) Mute Group
+22 Hats 3 (small) Mute Group
+26 Hats 2 (open) Mute Group
+27 Crash Small Alias
+28 Crash Small Alias
+29 Crash Small Alias
+30 Crash Small Alias
+31 Crash Small Alias
+32 Crash Small Alias
+33 Snare Alias
+34 KD Short
+35 KD Long
+36 KD Main
+37 Snare Small
+38 Snare Main
+39 Claps
+40 Snare Fat
+41 FX Impacts Lo Trigger
+42 Hats 1 Closed
+43 Tom 3 Low
+44 Hats 3 Small
+45 Tom 2 Mid
+46 Hats 2 Open
+48 Tom 1 Hi
+49 Crash 1 Large
+50 FX Impacts Hi Trigger
+51 Ride
+52 Crash Small Alias
+53 Ride Alias
+54 Tambourine Hit
+55 Crash 2 Large Alias
+56 Percussion Hit
+57 Crash 2 Small
+58 Shaker
+59 Ride Alias
+60 Hats Open Alias
+61 Hats Closed Alias
+62 Hats Closed Alias
+74 KD Chromatic D Low
+75 KD Chromatic D# Low
+76 KD Chromatic E
+77 KD Chromatic F
+78 KD Chromatic F#
+79 KD Chromatic G
+80 KD Chromatic G#
+81 KD Chromatic A
+82 KD Chromatic A#
+83 KD Chromatic B
+84 KD Chromatic C
+85 KD Chromatic C#
+86 KD Chromatic D Hi
+87 KD Chromatic D# Hi

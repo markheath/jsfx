@@ -1,0 +1,112 @@
+# v0.1 7 May 2022
+18 [Hats] hatsTrig
+20 [Hats] hatsTipTrig
+21 [Hats] Closed Pedal
+22 [Hats] Closed Edge
+23 [Hats] Open Pedal
+24 [Hats] Open 1
+25 [Hats] Open 2
+26 [Hats] Open 3
+27 [China 1] Crash
+28 [Cymbal 1] Crash Alias
+29 [China 2] Crash Alias
+30 [Cymbal 2] Punch Alias
+31 [Cymbal 2] Punch Alias
+32 [Cymbal 2] Punch
+33 [Snare] Center Alt
+34 [Kick] Hit alias
+35 [Kick] Hit alias
+36 [Kick] Hit
+37 [Snare] Sidestick
+38 [Snare] Center
+39 [Body Sounds] Hand Claps
+40 [Snare] Rimshot
+41 [Djembe] Head
+42 [Hats] Closed Tip Alias
+43 [Tom 4] Center
+44 [Hats] Closed Pedal Alias
+45 [Tom 3] Center
+46 [Hats] Open 2 Alias
+47 [Tom 2] Center
+48 [Tom 1] Center
+49 [Cymbal 1] Crash
+50 [Cymbal 2] Crash Alias
+51 [One Shot] Glass Bowl
+52 [China 2] Crash
+53 [One Shot] Spoxe/WoodBlock
+54 [Hand Drum] Muted Tambourine Alias
+55 [One Shot] Hub Cap
+56 [One Shot] Block/Tamb
+57 [Cymbal 2] Crash
+58 [Clanger 2] Open
+59 [One Shot] Tamb/Gong 
+60 [Hats] Open 4
+61 [Hats] Closed Tip
+62 [Hats] Tight Edge
+63 [Hats] Tight Tip
+64 [Hats] Seq Hard
+65 [Hats] Seq Soft
+66 [One Shot] Brushed Head Alias
+67 [One Shot] Brushed Head Alias
+68 [One Shot] Brushed Head
+69 [Snare Alt] Center
+70 [Snare Alt] Center Alias
+71 [Snare Alt] Center Alt
+72 [Djembe] Center Alt
+73 [Djembe] Center Alias
+74 [Tom 4] Alt
+75 [Tom 4] Center Alias
+76 [Special] Cakepan
+77 [Tom 3] Center Alt
+78 [Tom 3] Center Alias
+79 [Tom 2] Center Alt
+80 [Tom 1] Center Alias
+81 [Tom 1] Center Alt
+82 [Tom 1] Center Alias
+83 [Body Sounds] Stair Steps
+84 [Body Sounds] Chest Hits
+85 [Body Sounds] Hand Breath
+86 [Body Sounds] Hand Claps Alias
+87 [Body Sounds] Zipper Off Beat
+88 [Body Sounds] Zipper On Beat
+89 [Body Sounds] Card Off Beat
+90 [Body Sounds] Card On Beat
+91 [Body Sounds] Body Hands
+92 [One Shot] Hub Cap Alias
+93 [One Shot] Block/Tamb Alias
+94 [One Shot] Tamb/Gong Alias
+95 [Clanger 2] Cakepan Open
+96 [One Shot] Spoxe/Block Alias
+97 [One Shot] Glass Bowl Alias
+98 [One Shot] Brushed Head Alias
+99 [FX Box] Cow Moo
+100 [FX Box] Train Whistle Short
+101 [FX Box] Train Whistle Long
+102 [FX Box] Siren Short
+103 [FX Box] Siren Long
+104 [FX Box] Duck Quack
+105 [FX Box] Short Ratchet
+106 [FX Box] Thunder Shake
+107 [FX Box] Thunder Hit
+108 [FX Box] Accordeon
+109 [Tonal Percussion] Pitch 1
+110 [Tonal Percussion] Pitch 2
+111 [Tonal Percussion] Pitch 3
+112 [Tonal Percussion] Pitch 4
+113 [Clapper] Hit Alias
+114 [Clapper] Hit
+115 [Clapper] Off Beat
+116 [Clapper] On Beat
+117 [Clanger 1] Hand Alias
+118 [Clanger 1] Hand
+119 [Clanger 1] Muted
+120 [Clanger 1] Open
+121 [Hand Drum] Open Tambourine
+122 [Hand Drum] Muted Tambourine
+123 [Body Sounds] Card Off Beat
+124 [Body Sounds] Card On Beat
+125 [Rattle] Off Bt
+126 [Rattle] On Beat
+127 [Rattle] Cresendo
+
+

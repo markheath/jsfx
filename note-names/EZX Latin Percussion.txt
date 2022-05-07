@@ -1,0 +1,124 @@
+# v0.1 7 May 2022
+5 Maracas Shake
+6 Caxixi Off Beat
+7 Caxixi On Beat
+8 Caxixi Beat
+9 Caxixi FX
+10 Cajon Bass Right Alias
+11 Cajon GhostStroke Left
+12 Cajon GhostStroke Right
+13 Cajon Sidestick Left
+14 Cajon Sidestick Right
+15 Timbale 1 Ruff
+16 Timbale 1 Flam
+17 Timbale 1 SideStroke
+18 Timbale 1 RimShot
+19 Timbale 1 Open Right
+20 Timbale 2 RimShot
+21 Timbale 2 Open Left
+22 Timbale 2 Flam
+23 Timbale 2 SideStroke
+24 Tambourine Open Hit
+25 Tambourine Muted Hit
+26 Tambourine Off Beat
+27 Tambourine On Beat
+28 Bongo 1 Open Right
+29 Bongo 1 Heel Left
+30 Bongo 1 Heel Right
+31 Bongo 1 Crescendo
+32 Bongo 1 Flam
+33 Udu Ghostnote Left
+34 Udu Ghostnote Right
+35 Udu Open High
+36 Udu Open Low
+37 Udu Slap Muted
+38 Udu Slap Open
+39 Udu Flam
+40 Cajon Slap Left
+41 Cajon Slap Right
+42 Cajon Slap Left Mid
+43 Cajon Slap Right Mid
+44 Shaker 2 Off Beat
+45 Shaker 2 On Beat
+46 Shaker 2 Off Beat Alias
+47 Afuche Beat
+48 Shaker 1 Off Beat Alias
+49 Shaker 1 On Beat
+50 Shaker 1 Off Beat
+51 Bongo 2 Open Left
+52 Bongo 2 Crescendo
+53 Bongo 2 Flam
+54 Tambourine Open Hit Alias
+55 Splash Crash
+56 Cowbell Hit
+57 Cymbal 1 Crash
+58 Vibraslap Hit
+59 Cymbal 2 Crash
+60 Bongo 1 Open Left
+61 Bongo 2 Open Right
+62 Conga 1 Muted Left
+63 Conga 1 Open Left
+64 Conga 1 Bass Left
+65 Timbale 1 Open Left
+66 Timbale 2 Open Right
+67 Bells Hit
+68 Shells Stroke
+69 Maracas Off Beat
+70 Maracas On Beat
+71 Crickets Stroke
+72 Chimes Stroke
+73 Guiro Fast
+74 Guiro Slow
+75 Woodblock Block 1
+76 Woodblock Block 2
+77 Woodblock Block 3
+78 Shaker 2 Shake
+79 Shaker 1 Shake
+80 Triangle Muted
+81 Triangle Open
+82 Cajon Flam
+83 Cajon Crescendo Alias
+84 Cajon Bass Right
+85 Cajon Brush Hit Right
+86 Cajon Brushed Right Alias
+87 Cajon Brushed Right Alias
+88 Conga 1 Slap Crescendo
+89 Conga 1 Muted Right
+90 Conga 1 Open Right
+91 Conga 1 Bass Right
+92 Conga 1 Slap Open Right
+93 Conga 1 Slap Open Right
+94 Conga 1 Slap Muted Left
+95 Conga 1 Slap Muted Right
+96 Conga 1 Heel Left
+97 Conga 1 Heel Right
+98 Conga 1 Crescendo
+99 Conga 1 Flam
+100 Conga 1 Slap Flam
+101 Conga 1 FX
+102 Conga 2 Open Left
+103 Conga 2 Open Right
+104 Conga 2 Muted Left
+105 Conga 2 Muted Right
+106 Conga 2 Bass Left
+107 Conga 2 Bass Right
+108 Conga 2 Crescendo
+109 Conga 2 Flam 
+110 Conga 2 FX
+111 Conga 2 Bass Left Alias
+112 Conga 2 Bass Right Alias
+113 Conga 2 Crescendo Alias
+114 Cajon Brushed Right
+115 Cajon Crescendo
+116 Udu Slap Crescendo
+117 Udu Crescendo
+118 Tambourine Crescendo
+119 Bells Crescendo
+120 Cymbal 1 Crescendo
+121 Shells Crescendo
+122 Cymbal 2 Crescendo
+123 Crickets Crescendo
+124 Shekere Beat
+125 Shekere Off Beat
+126 Shekere On Beat
+127 Shekere Shake

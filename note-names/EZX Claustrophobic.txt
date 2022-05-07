@@ -1,0 +1,130 @@
+# v0.1 7 May 2022
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18 [Hats] hatsTrig
+19 [Hats] hatsTipTrig Alias
+20 [Hats] hatsTipTrig
+21 [Hats] Closed Pedal
+22 [Hats] Closed Edge
+23 [Hats] Open Pedal
+24 [Hats] Open 1
+25 [Hats] Open 2
+26 [Hats] Open 3
+27 [China] Crash
+28 [Ride] Crash
+29 [China] Crash
+30 [Splash] Crash
+31 [Splash] Crash
+32 [Ride] Crash
+33 [Snare] Center Alt
+34 [Footstomps] Stomp
+35 [Kick] Hit Alias
+36 [Kick] Hit
+37 [Snare] SideStick
+38 [Snare] Center
+39 [Claps] Claps
+40 [Snare] Rimshot
+41 [Floortom 2] Center
+42 [Hats] Closed Tip Alias
+43 [Floortom 1] Center
+44 [Hats] Closed Pedal Alias
+45 [Racktom 2] Center Alias
+46 [Hats] Open 2 Alias
+47 [Racktom 2] Center
+48 [RackTom 1] Center
+49 [Cymbal 1] Crash
+50 [Cymbal 1] Mute
+51 [Ride] Bow
+52 [Cymbal 3] Crash (China)
+53 [Ride] Bell
+54 [Tambourine 1] Hit
+55 [Splash] Crash
+56 [Cowbell 1] Hit
+57 [Cymbal 2] Crash
+58 [Snaps] Snaps
+59 [Ride] Edge  
+60 [Hats] Open 4
+61 [Hats] Closed Tip
+62 [Hats] Tight Edge
+63 [Hats] Tight Tip
+64 [Hats] Seq Hard
+65 [Hats] Seq Soft
+66 [Hi Snare] Center Alt
+67 [Hi Snare] Sidestick
+68 [Hi Snare] Center
+69 [Hi Snare] Rimshot
+70 [Snare Shell] Center Alt
+71 [Snare Shell] Center
+72 [Floortom 2] Center Alt
+73 [Floortom 2] Rimshot
+74 [Floortom 1] Center Alt
+75 [Floortom 2] Rimshot
+76 [Cowbell 2] Hit
+77 [Racktom 2] Center Alt Alias
+78 [Racktom 2] Rimshot Alias
+79 [Racktom 2] Center Alt
+80 [Racktom 2] Rimshot
+81 [Racktom 1] Center Alt
+82 [Racktom 1] Rimshot
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95 [Splash] Mute
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106 [Cymbal 2] Mute
+107 [Cymbal 3] Mute (China)
+108 [Chimes] Down
+109 [Chimes] Up
+110
+111 [Triangle] Short
+112 [Triangle] Long
+113 [Tambourine 2] Hit
+114 [Tambourine 2] Hit Alias
+115 [Tambourine 2] Off Beat
+116 [Tambourine 2] On Beat
+117 [Tambourine 2] Crescendo
+118 [Bells] Hit
+119 [X-Hats 1] Closed Tip
+120 
+121 [X-Hats 2] Closed Shank
+122 [Cabasa] Short Alias
+123 [Cabasa] Short
+124 [Cabasa] Long
+125 [Shaker] Off Beat
+126 [Shaker] On Beat
+127 [Shaker] Crescendo
+
+

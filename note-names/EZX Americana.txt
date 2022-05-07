@@ -1,0 +1,128 @@
+# v0.1 7 May 2022
+127	[Snare] Sidestick
+126	[Snare] Rimshot
+125	[Snare] Center Alt
+124	[Hats] Open 3
+123	[Hats] Open 1
+122	[Hats] Closed Edge
+121	[Hats] Bell Open 2
+120	[Hats] Bell Open 1
+119	[Hats] Bell Closed
+118	[Ride] Mute
+117	[Ride] Bell Tip
+116	[Ride] Ride Shank
+115	[Ride] Edge
+114	[Ride] Bell Shank
+113	[Ride] Ride Tip
+112	[Ride] Bell Tip
+111	[Ride] Ride Shank
+110	[Ride] Edge
+109	[Ride] Bell Shank
+108	[Ride] Ride Tip
+107	[Crash B] Mute
+106	[Crash B] Mute
+105	[Ride] Bell Tip
+104	[Ride] Ride Shank
+103	[Ride] Edge
+102	[Ride] Bell Shank
+101	[Ride] Ride Tip
+100	[Ride] Bell Tip
+99	[Ride] Ride Shank
+98	[Ride] Edge
+97	[Ride] Bell Shank
+96	[Ride] Ride Tip
+95	[Crash A] Mute
+94	[Crash A] Mute
+93	[Ride] Bell Tip
+92	[Ride] Ride Shank
+91	[Ride] Edge
+90	[Ride] Bell Shank
+89	[Ride] Ride Tip
+88	[Ride] Bell Tip
+87	[Ride] Ride Shank
+86	[Ride] Edge
+85	[Ride] Bell Shank
+84	[Ride] Ride Tip
+83	[Crash A] Mute
+82	[Racktom] Rimshot
+81	[Racktom] Rim Only
+80	[Racktom] Rimshot
+79	[Racktom] Rim Only
+78	[Racktom] Rimshot
+77	[Racktom] Rim Only
+76	[Percussion] Hit
+75	[Floortom] Rimshot
+74	[Floortom] Rim Only
+73	[Floortom] Rimshot
+72	[Floortom] Rim Only
+71	[Snare] Rim Only
+70	[Snare] Muted Rimshot
+69	[Snare] Flams
+68	[Snare] Muted
+67	[Snare] Sidestick
+66	[Snare] Muted Alt
+65	[Hats] Seq Hits
+64	[Hats] Open 0
+63	[Hats] Tight Tip
+62	[Hats] Tight Edge
+61	[Hats] Closed Tip
+60	[Hats] Open 4
+59	[Ride] Edge
+58	[Crash B] Mute
+57	[Crash B] Crash
+56	[Hats] Bell Open 3
+55	[Crash A] Crash
+54	[Percussion] Hit
+53	[Ride] Bell Shank
+52	[Ride] Bow Shank
+51	[Ride] Bow Tip
+50	[Crash A] Mute
+49	[Crash A] Crash
+48	[Racktom] Center
+47	[Racktom] Center Alt
+46	[Hats] Open 2
+45	[Racktom] Center Alt
+44	[Hats] Closed Pedal
+43	[Floortom] Center
+42	[Hats] Closed Tip
+41	[Floortom] Left
+40	[Snare] Rimshot
+39	[Snare] Ruffs
+38	[Snare] Center
+37	[Snare] Sidestick
+36	[Kick] Hit
+35	[Kick] Open
+34	[Kick] Hit
+33	[Snare] Edge
+32	[Crash B] Crash
+31	[Crash B] Crash
+30	[Crash B] Crash
+29	[Crash A] Crash
+28	[Crash A] Crash
+27	[Crash A] Crash
+26	[Hats] Open 3
+25	[Hats] Open 2
+24	[Hats] Open 1
+23	[Hats] Open Pedal
+22	[Hats] Closed Edge
+21	[Hats] Closed Pedal
+20	[Hats] hatsBellTrig
+19	[Hats] hatsTipTrig
+18	[Hats] hatsTrig
+17	[Hats] Open 5
+16	[Hats] Open 4
+15	[Hats] Open 3
+14	[Hats] Open 2
+13	[Hats] Open 1
+12	[Hats] Open 0
+11	[Hats] Closed Tip
+10	[Hats] Closed Pedal
+9	[Hats] hatsBellTrig
+8	[Hats] hatsTipTrig
+7	[Hats] hatsTrig
+6	[Snare] snareTrig
+5	[Snare] Sidestick Left
+4	[Snare] Sidestick Right
+3	Tambourine
+2	Shaker Accent
+1	One-Shot / Claps

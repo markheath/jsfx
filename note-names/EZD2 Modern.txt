@@ -1,0 +1,66 @@
+# v0.1 7 May 2022
+84 Ride Bow
+83 Ride Muted
+82 Rack Tom 1 Rimshot
+81 Rack Tom 1 Center
+80 Rack Tom 2 Rimshot
+79 Rack Tom 2 Center
+78 Rack Tom 3 Rimshot
+77 Rack Tom 3 Center
+76 Snare Sidestick
+75 Floor Tom 1 Rimshot
+74 Floor Tom 1 Center
+73 Floor Tom 2 Rimshot
+72 Floor Tom 2 Center
+65 Hats Seq Hits
+64 Hats Closed Edge
+63 Hats Tight Tip
+62 Hats Tight Edge
+61 Hats Closed Tip
+60 Hats Open Max
+59 Ride Edge
+58 Cymbal 3 Muted
+57 Cymbal 3 Crashed
+56 Cymbal 1 Muted
+55 Cymbal 1 Crashed
+54 Cymbal 4 Muted
+53 Ride Bell
+52 Cymbal 4 Crashed
+51 Ride Bow
+50 Cymbal 2 Muted
+49 Cymbal 2 Crashed
+48 Rack Tom 1 Center
+47 Rack Tom 2 Center
+46 Hats Open
+45 Rack Tom 3 Center
+44 Hats Pedal
+43 Floor Tom 1 Center
+42 Hats Closed Tip
+41 Floor Tom 2 Center
+40 Snare Rimshot
+39 Snare Center alias
+38 Snare Center
+37 Sidestick
+36 Kick
+35 Kick alias
+34 Kick alias
+33 Snare Center alias
+32 Cymbal 3 crash alias
+31 Cymbal 3 crash alias
+30 Ride edge alias
+29 Ride edge alias
+28 Cymbal 2 crash alias
+27 Cymbal 2 crash alas
+26 Hats Open 3
+25 Hats Open 2
+24 Hats Open 1
+23 Hats Open Pedal
+22 Hats Closed Edge
+21 Hats Closed Pedal
+20 Hats Tip Trigger
+18 Hats Edge Trigger
+17 Hats Open 5
+3 Tambourine
+2 Shaker or Maracas
+1 Cowbell or Clap
+

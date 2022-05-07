@@ -1,0 +1,128 @@
+# v0.1 7 May 2022
+1 [Shaker] Accent
+2 [Tambourine] Accent
+3 [One Shot] Claps Hit
+4
+5
+6 [Snare] Center Alias
+7 [Hi-Hat] hatsTrig Alias
+8 [Hi-Hat] hatsTipTrig Alias
+9 [Hi-Hat] Hats Bell Trig
+10 [Hi-Hat] Closed Pedal Alias
+11 [Hi-Hat] Closed Edge Alias
+12 [Hi-Hat] Open 1 Alias
+13 [Hi-Hat] Open 2 Alias
+14 [Hi-Hat] Open 3 Alias
+15 [Hi-Hat] Open 3 Alias
+16 [Hi-Hat] Open 4 Alias
+17 [Hi-Hat] Open 4 Alias
+18 [Hi-Hat] hatsTrig
+19 [Hi-Hat] Closed Edge Alias
+20 [Hi-Hat] hatsTipTrig
+21 [Hi-Hat] Closed Pedal
+22 [Hi-Hat] Closed Edge
+23 [Hi-Hat] Open Pedal
+24 [Hi-Hat] Open 1
+25 [Hi-Hat] Open 2
+26 [Hi-Hat] Open 3
+27 [Crash Ride] Edge Alias
+28 [Crash Ride] Edge Alias
+29 [Crash Ride] Edge Alias
+30 [Ride] Edge Alias
+31 [Ride] Edge Alias
+32 [Ride] Edge Alias
+33 [Snare] Center Alt
+34 [Kick] Hit Alias
+35 [Kick] Hit Alias
+36 [Kick] Hit
+37 [Snare] Sidestick
+38 [Snare] Center
+40 [Snare] Rimshot
+41 [Floortom] Center Alt
+42 [Hi-Hat] Closed Tip Alias
+43 [Floortom] Center
+44 [Hi-Hat] Closed Pedal Alias
+45 [Racktom 2] Center Alt
+46 [Hi-Hat] Open 2 Alias
+47 [Racktom 2] Center
+48 [Racktom 1] Center
+49 [Crash Ride] Edge
+50 [Crash Ride] Mute
+51 [Ride] Bow
+52 [Ride] Edge Alias
+53 [Ride] Bell
+54 [Crash Ride] Mute Alias
+55 [Crash Ride] Edge Alias
+56 [Woodblock] Hit
+57 [Ride] Edge Alias
+58 [Ride] Mute
+59 [Ride] Edge
+60 [Hi-Hat] Open 4
+61 [Hi-Hat] Closed Tip
+62 [Hi-Hat] Tight Edge
+63 [Hi-Hat] Tight Tip
+64 [Hi-Hat] Seq Hits
+65 [Hi-Hat] Seq Hits Alias
+66 [Snare] Center Alt Alias
+67 [Snare] Sidestick Alias
+68 [Snare] Center Alias
+69 [Snare] Center Alias
+70 [Snare] Center Alias
+71 [Snare] Rim Only
+72 [Floortom] Rim Only Alias
+73 [Floortom] Rimshot Alias
+74 [Floortom] Rim Only
+75 [Floortom] Rimshot
+76 [Woodblock] Stick
+77 [Racktom 2] Rim Only Alias
+78 [Racktom 2] Rimshot Alias
+79 [Racktom 2] Rim Only
+80 [Racktom 2] Rimshot
+81 [Racktom 1] Rim Only
+82 [Racktom 1] Rimshot
+83 [Crash Ride] Mute Alias
+84 [Crash Ride] Bow
+85 [Crash Ride] Bell
+86 [Crash Ride] Edge Alias
+87 [Crash Ride] Bow Alias
+88 [Crash Ride] Bell Alias
+89 [Crash Ride] Bow Alias
+90 [Crash Ride] Bell Alias
+91 [Crash Ride] Edge Alias
+92 [Crash Ride] Bow Alias
+93 [Crash Ride] Bell Alias
+94 [Crash Ride] Mute Alias
+95 [Crash Ride] Mute Alias
+96 [Crash Ride] Bow Alias
+97 [Crash Ride] Bell Alias
+98 [Crash Ride] Edge Alias
+99 [Crash Ride] Bow Alias
+100 [Crash Ride] Bell Alias
+101 [Ride] Bow Alias
+102 [Ride] Bell Alias
+103 [Ride] Edge Alias
+104 [Ride] Bow Alias
+105 [Ride] Bell Alias
+106 [Ride] Mute Alias
+107 [Ride] Mute Alias
+108 [Ride] Bow Alias
+109 [Ride] Bell Alias
+110 [Ride] Edge Alias
+111 [Ride] Bow Alias
+112 [Ride] Bell Alias
+113 [Ride] Bow Alias
+114 [Ride] Bell Alias
+115 [Ride] Edge Alias
+116 [Ride] Bow Alias
+117 [Ride] Bell Alias
+118 [Ride] Mute Alias
+119 [Hi-Hat] Bell Closed
+120 [Hi-Hat] Bell Open 1
+121 [Hi-Hat] Bell Open 2
+122 [Hi-Hat] Closed Edge Alias
+123 [Hi-Hat] Open 1
+124 [Hi-Hat] Open 3
+125 [Snare] Center Alias
+126 [Snare] Rimshot Alias
+127 [Snare] Sidestick Alias
+CC4 [Hi-Hat] hatsCtrl
