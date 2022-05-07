@@ -6,6 +6,7 @@ desc:Airwindows Verbity (Mark Heath)
 // version history:
 // 0.1 30 Apr 2022 - initial port from GitHub commit 558b93e
 // 0.2 6 May 2022 - improved bit shifting for random number
+// 0.3 7 May 2022 - correct init code order
 
 //tags: reverb
 //author: Mark Heath
@@ -37,20 +38,6 @@ D = 0.25;
 iirAL = 0.0; iirAR = 0.0;
 iirBL = 0.0; iirBR = 0.0;
 
-count = 0; loop(6479, aIL[count] = 0.0;aIR[count] = 0.0;count+=1; );
-count = 0; loop(3659, aJL[count] = 0.0;aJR[count] = 0.0;count+=1; );
-count = 0; loop(1719, aKL[count] = 0.0;aKR[count] = 0.0;count+=1; );
-count = 0; loop(679, aLL[count] = 0.0;aLR[count] = 0.0;count+=1; );
-
-count = 0; loop(9699, aAL[count] = 0.0;aAR[count] = 0.0;count+=1; );
-count = 0; loop(5999, aBL[count] = 0.0;aBR[count] = 0.0;count+=1; );
-count = 0; loop(2319, aCL[count] = 0.0;aCR[count] = 0.0;count+=1; );
-count = 0; loop(939, aDL[count] = 0.0;aDR[count] = 0.0;count+=1; );
-
-count = 0; loop(15219, aEL[count] = 0.0;aER[count] = 0.0;count+=1; );
-count = 0; loop(8459, aFL[count] = 0.0;aFR[count] = 0.0;count+=1; );
-count = 0; loop(4539, aGL[count] = 0.0;aGR[count] = 0.0;count+=1; );
-count = 0; loop(3199, aHL[count] = 0.0;aHR[count] = 0.0;count+=1; );
 
 feedbackAL = 0.0; feedbackAR = 0.0;
 feedbackBL = 0.0; feedbackBR = 0.0;
@@ -60,8 +47,6 @@ previousAL = 0.0; previousAR = 0.0;
 previousBL = 0.0; previousBR = 0.0;
 previousCL = 0.0; previousCR = 0.0;
 previousDL = 0.0; previousDR = 0.0;
-
-count = 0; loop(6, lastRefL[count] = 0.0;lastRefR[count] = 0.0; count+=1 );
 
 thunderL = 0; thunderR = 0;
 
@@ -113,8 +98,26 @@ aER = freemem; freemem+=15220;
 aFR = freemem; freemem+=8460;
 aGR = freemem; freemem+=4540;
 aHR = freemem; freemem+=3200;
- 
+
 lastRefR = freemem; freemem+=7;
+
+count = 0; loop(6, lastRefL[count] = 0.0;lastRefR[count] = 0.0; count+=1 );
+
+count = 0; loop(6479, aIL[count] = 0.0;aIR[count] = 0.0;count+=1; );
+count = 0; loop(3659, aJL[count] = 0.0;aJR[count] = 0.0;count+=1; );
+count = 0; loop(1719, aKL[count] = 0.0;aKR[count] = 0.0;count+=1; );
+count = 0; loop(679, aLL[count] = 0.0;aLR[count] = 0.0;count+=1; );
+
+count = 0; loop(9699, aAL[count] = 0.0;aAR[count] = 0.0;count+=1; );
+count = 0; loop(5999, aBL[count] = 0.0;aBR[count] = 0.0;count+=1; );
+count = 0; loop(2319, aCL[count] = 0.0;aCR[count] = 0.0;count+=1; );
+count = 0; loop(939, aDL[count] = 0.0;aDR[count] = 0.0;count+=1; );
+
+count = 0; loop(15219, aEL[count] = 0.0;aER[count] = 0.0;count+=1; );
+count = 0; loop(8459, aFL[count] = 0.0;aFR[count] = 0.0;count+=1; );
+count = 0; loop(4539, aGL[count] = 0.0;aGR[count] = 0.0;count+=1; );
+count = 0; loop(3199, aHL[count] = 0.0;aHR[count] = 0.0;count+=1; );
+
 
 const1 = 1.18*10^-23; // 1.18e-23;
 const2 = 1.18*10^-17; // 1.18e-17

@@ -81,10 +81,20 @@ airwindows.ReaPacks.Add(effect);
 effect = new ReaPack() { Name = "Airwindows Verbity" };
 effect.Versions.Add(new Version()
 {
-	Name = "0.2",
-	ChangeLog = "improved bit shifting for random number",
+	Name = "0.3",
+	ChangeLog = "correct init code order",
 	Source = new Source("airwindows-verbity.jsfx"),
-	Time = "2022-05-06T13:00:00+01:00"
+	Time = "2022-05-07T09:00:54+01:00"
+});
+airwindows.ReaPacks.Add(effect);
+
+effect = new ReaPack() { Name = "Airwindows Bandaxall" };
+effect.Versions.Add(new Version()
+{
+	Name = "0.1",
+	ChangeLog = "initial port from GitHub commit 558b93e",
+	Source = new Source("airwindows-bandaxall.jsfx"),
+	Time = "2022-05-07T09:00:54+01:00"
 });
 airwindows.ReaPacks.Add(effect);
 
@@ -129,7 +139,7 @@ public class Version {
 
 public class Source
 {
-	private Source() {} // needed
+	private Source() {} // needed for serializer
 	public Source(string file) { File = file; Value = $"https://raw.githubusercontent.com/markheath/jsfx/main/{file}"; }
 	[XmlAttribute("file")] public string File { get; set; }
 	[XmlText] public string Value { get; set; }
