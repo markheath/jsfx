@@ -1,106 +1,69 @@
 <Query Kind="Statements">
   <Namespace>System.Xml.Serialization</Namespace>
+  <Namespace>System.Web</Namespace>
 </Query>
 
 var serializer = new XmlSerializer(typeof(Index));
 
 var index = new Index() { Name = "Mark Heath" };
 var airwindows = new Category() { Name="Airwindows" };
+var noteMaps = new Category() { Name="EZDrummer MIDI Note Maps" };
+var folder = Path.GetDirectoryName(Util.CurrentQueryPath);
 
-var effect = new ReaPack() { Name = "Airwindows Bright Ambience 3"};
-effect.Versions.Add(new Version()
+void AddEffect(string file)
 {
-	Name = "0.2",
-	ChangeLog = "improved bit shifting for random number",
-	Source = new Source("airwindows-brightambience3.jsfx"),
-	Time = "2022-05-06T21:46:56+01:00"
-});
-airwindows.ReaPacks.Add(effect);
+	var lines = File.ReadAllLines(file);
+	var desc = lines.First(l => l.StartsWith("desc:")).Substring(5).Replace("(Mark Heath)","").Trim();
+	var regex = new Regex(@"\/\/ (\d\.\d) (\d+ [a-zA-Z]+ \d{4}) \- (.*)");
+	var versionLine = lines.Last(l => regex.IsMatch(l));
+	var matches = regex.Match(versionLine);
+	var version = matches.Groups[1].Value;
+	var date = DateTime.Parse(matches.Groups[2].Value);
+	var message = matches.Groups[3].Value;
+	var effect = new ReaPack() { Name = desc };
+	effect.Versions.Add(new Version()
+	{
+		Name = version,
+		ChangeLog = message,
+		Source = new Source(Path.GetFileName(file)),
+		Time = date.ToString("yyyy-MM-dd\\THH:mm:ss+01:00")
+	});
+	airwindows.ReaPacks.Add(effect);
+}
 
-effect = new ReaPack() { Name = "Airwindows Console7" };
-effect.Versions.Add(new Version()
+void AddNoteMap(string file, string subfolder)
 {
-	Name = "0.1",
-	ChangeLog = "initial port from GitHub commit 558b93e",
-	Source = new Source("airwindows-console7.jsfx"),
-	Time = "2022-05-02T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
+	var lines = File.ReadAllLines(file);
+	var desc =  Path.GetFileNameWithoutExtension(file);
+	var regex = new Regex(@"\# v(\d\.\d) (\d+ [a-zA-Z]+ \d{4})");
+	var versionLine = lines.Last(l => regex.IsMatch(l));
+	var matches = regex.Match(versionLine);
+	var version = matches.Groups[1].Value;
+	var date = DateTime.Parse(matches.Groups[2].Value);
+	var message = matches.Groups[3].Value;
+	var effect = new ReaPack() { Name = desc, Type="midinotenames" };
+	effect.Versions.Add(new Version()
+	{
+		Name = version,
+		ChangeLog = message,
+		Source = new Source(Path.GetFileName(file), subfolder),
+		Time = date.ToString("yyyy-MM-dd\\THH:mm:ss+01:00")
+	});
+	noteMaps.ReaPacks.Add(effect);
+}
 
-effect = new ReaPack() { Name = "Airwindows Galactic" };
-effect.Versions.Add(new Version()
+foreach (var f in Directory.GetFiles(folder, "airwindows-*.jsfx"))
 {
-	Name = "0.1",
-	ChangeLog = "initial port from GitHub commit 558b93e",
-	Source = new Source("airwindows-galactic.jsfx"),
-	Time = "2022-05-02T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-effect = new ReaPack() { Name = "Airwindows PurestAir" };
-effect.Versions.Add(new Version()
+	AddEffect(f);
+}
+foreach(var f in Directory.GetFiles(Path.Combine(folder,"note-names"), "*.txt"))
 {
-	Name = "0.1",
-	ChangeLog = "initial port from GitHub commit 558b93e",
-	Source = new Source("airwindows-purest-air.jsfx"),
-	Time = "2022-05-02T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-effect = new ReaPack() { Name = "Airwindows PurestGain" };
-effect.Versions.Add(new Version()
-{
-	Name = "0.1",
-	ChangeLog = "initial port from GitHub commit 558b93e",
-	Source = new Source("airwindows-purest-gain.jsfx"),
-	Time = "2022-05-02T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-
-effect = new ReaPack() { Name = "Airwindows NC-17" };
-effect.Versions.Add(new Version()
-{
-	Name = "0.2",
-	ChangeLog = "improved bit shifting for random number",
-	Source = new Source("airwindows-nc-17.jsfx"),
-	Time = "2022-05-06T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-effect = new ReaPack() { Name = "Airwindows ToTape6" };
-effect.Versions.Add(new Version()
-{
-	Name = "0.3",
-	ChangeLog = "improved bit shifting for random number",
-	Source = new Source("airwindows-totape6.jsfx"),
-	Time = "2022-05-06T13:00:00+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-effect = new ReaPack() { Name = "Airwindows Verbity" };
-effect.Versions.Add(new Version()
-{
-	Name = "0.3",
-	ChangeLog = "correct init code order",
-	Source = new Source("airwindows-verbity.jsfx"),
-	Time = "2022-05-07T09:00:54+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-effect = new ReaPack() { Name = "Airwindows Bandaxall" };
-effect.Versions.Add(new Version()
-{
-	Name = "0.1",
-	ChangeLog = "initial port from GitHub commit 558b93e",
-	Source = new Source("airwindows-bandaxall.jsfx"),
-	Time = "2022-05-07T09:00:54+01:00"
-});
-airwindows.ReaPacks.Add(effect);
-
-
+	AddNoteMap(f, "note-names/");
+}
+	
 
 index.Categories.Add(airwindows);
+index.Categories.Add(noteMaps);
 
 await using var memoryStream = new MemoryStream();
 XmlTextWriter streamWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
@@ -139,8 +102,11 @@ public class Version {
 
 public class Source
 {
-	private Source() {} // needed for serializer
-	public Source(string file) { File = file; Value = $"https://raw.githubusercontent.com/markheath/jsfx/main/{file}"; }
+	private Source() { } // needed for serializer
+	public Source(string file, string subfolder = "") 
+	{ 
+		File = file; 
+		Value = $"https://raw.githubusercontent.com/markheath/jsfx/main/{subfolder}{file.Replace(" ","%20")}"; }
 	[XmlAttribute("file")] public string File { get; set; }
 	[XmlText] public string Value { get; set; }
 }

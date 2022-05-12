@@ -1,58 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" name="Mark Heath">
   <category name="Airwindows">
+    <reapack name="Airwindows Bandaxall" type="effect">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog>initial port from GitHub commit 558b93e</changelog>
+        <source file="airwindows-bandaxall.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-bandaxall.jsfx</source>
+      </version>
+    </reapack>
     <reapack name="Airwindows Bright Ambience 3" type="effect">
-      <version name="0.2" author="Mark Heath" time="2022-05-06T21:46:56+01:00">
+      <version name="0.2" author="Mark Heath" time="2022-05-06T00:00:00+01:00">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-brightambience3.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-brightambience3.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows Console7" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-02T13:00:00+01:00">
+      <version name="0.1" author="Mark Heath" time="2022-05-02T00:00:00+01:00">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-console7.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-console7.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows Galactic" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-02T13:00:00+01:00">
+      <version name="0.1" author="Mark Heath" time="2022-05-02T00:00:00+01:00">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-galactic.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-galactic.jsfx</source>
       </version>
     </reapack>
+    <reapack name="Airwindows NC-17" type="effect">
+      <version name="0.2" author="Mark Heath" time="2022-05-06T00:00:00+01:00">
+        <changelog>improved bit shifting for random number</changelog>
+        <source file="airwindows-nc-17.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-nc-17.jsfx</source>
+      </version>
+    </reapack>
     <reapack name="Airwindows PurestAir" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-02T13:00:00+01:00">
+      <version name="0.1" author="Mark Heath" time="2022-05-02T00:00:00+01:00">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-purest-air.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-purest-air.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows PurestGain" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-02T13:00:00+01:00">
+      <version name="0.1" author="Mark Heath" time="2022-05-02T00:00:00+01:00">
         <changelog>initial port from GitHub commit 558b93e</changelog>
         <source file="airwindows-purest-gain.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-purest-gain.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows NC-17" type="effect">
-      <version name="0.2" author="Mark Heath" time="2022-05-06T13:00:00+01:00">
-        <changelog>improved bit shifting for random number</changelog>
-        <source file="airwindows-nc-17.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-nc-17.jsfx</source>
+    <reapack name="Airwindows Tape Delay 2" type="effect">
+      <version name="0.1" author="Mark Heath" time="2022-05-12T00:00:00+01:00">
+        <changelog>initial port from GitHub commit 558b93e</changelog>
+        <source file="airwindows-tape-delay2.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-tape-delay2.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows ToTape6" type="effect">
-      <version name="0.3" author="Mark Heath" time="2022-05-06T13:00:00+01:00">
+      <version name="0.3" author="Mark Heath" time="2022-05-06T00:00:00+01:00">
         <changelog>improved bit shifting for random number</changelog>
         <source file="airwindows-totape6.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-totape6.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows Verbity" type="effect">
-      <version name="0.3" author="Mark Heath" time="2022-05-07T09:00:54+01:00">
+      <version name="0.3" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
         <changelog>correct init code order</changelog>
         <source file="airwindows-verbity.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-verbity.jsfx</source>
       </version>
     </reapack>
-    <reapack name="Airwindows Bandaxall" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-07T09:00:54+01:00">
-        <changelog>initial port from GitHub commit 558b93e</changelog>
-        <source file="airwindows-bandaxall.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-bandaxall.jsfx</source>
+  </category>
+  <category name="EZDrummer MIDI Note Maps">
+    <reapack name="EZD Pop Rock" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD Pop Rock.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD%20Pop%20Rock.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZD2 Modern" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD2 Modern.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD2%20Modern.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZD2 Vintage" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD2 Vintage.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD2%20Vintage.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZD3 Bright Room" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD3 Bright Room.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD3%20Bright%20Room.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZD3 Main Room" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD3 Main Room.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD3%20Main%20Room.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZD3 Tight Room" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZD3 Tight Room.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZD3%20Tight%20Room.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Americana" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Americana.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Americana.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Claustrophobic" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Claustrophobic.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Claustrophobic.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Funkmaster" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Funkmaster.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Funkmaster.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Hip-Hop" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Hip-Hop.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Hip-Hop.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Latin Percussion" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Latin Percussion.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Latin%20Percussion.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Nashville" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Nashville.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Nashville.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Number 1 Hits" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Number 1 Hits.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Number%201%20Hits.txt</source>
+      </version>
+    </reapack>
+    <reapack name="EZX Twisted Kit" type="midinotenames">
+      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+        <changelog />
+        <source file="EZX Twisted Kit.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Twisted%20Kit.txt</source>
       </version>
     </reapack>
   </category>
