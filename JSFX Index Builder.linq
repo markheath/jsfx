@@ -68,7 +68,7 @@ void AddScript(string file, string subfolder)
     {
         Name = version,
         ChangeLog = message,
-        Source = new Source(Path.GetFileName(file), subfolder),
+        Source = new Source(Path.GetFileName(file), subfolder) { Main = "main" },
         Time = date.ToString("yyyy-MM-dd\\THH:mm:ss+01:00")
     });
     scripts.ReaPacks.Add(script);
@@ -134,6 +134,7 @@ public class Source
 	{ 
 		File = file; 
 		Value = $"https://raw.githubusercontent.com/markheath/jsfx/main/{subfolder}{file.Replace(" ","%20")}"; }
-	[XmlAttribute("file")] public string File { get; set; }
-	[XmlText] public string Value { get; set; }
+    [XmlAttribute("file")] public string File { get; set; }
+    [XmlAttribute("main")] public string Main { get; set; }
+    [XmlText] public string Value { get; set; }
 }

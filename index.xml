@@ -152,7 +152,7 @@
     <reapack name="mark-heath auto-riser" type="script">
       <version name="0.01" author="Mark Heath" time="2023-02-10T00:00:00+01:00">
         <changelog>initial version (beta)</changelog>
-        <source file="mark-heath auto-riser.lua">https://raw.githubusercontent.com/markheath/jsfx/main/scripts/mark-heath%20auto-riser.lua</source>
+        <source file="mark-heath auto-riser.lua" main="main">https://raw.githubusercontent.com/markheath/jsfx/main/scripts/mark-heath%20auto-riser.lua</source>
       </version>
     </reapack>
   </category>
