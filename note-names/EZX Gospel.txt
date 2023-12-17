@@ -1,0 +1,126 @@
+# v0.1 12 Dec 2023
+127	[Tambourine] Shake
+126	[Shaker] On Beat
+125	[Shaker] Off Beat
+124	[Tambourine] Hit
+123	[Tambourine] On Beat
+122	[Tambourine] Off Beat
+121	[Hats] Open Edge 4
+120	[Hats] Open Edge 2
+119	[Hats] Closed Edge
+118	[Ride] Muted Hit
+117	[Ride] Bell
+116	[Ride] Bow
+115	[Ride] Edge
+114	[Ride] Bell
+113	[Ride] Bow
+112	[Ride] Bell
+111	[Ride] Bow
+110	[Ride] Edge
+109	[Ride] Bell
+108	[Ride] Bow
+107	[China] Muted Hit
+106	[Crash 3] Muted Hit
+105	[Ride] Bell
+104	[Ride] Bow
+103	[Ride] Edge
+102	[Ride] Bell
+101	[Ride] Bow
+100	[Ride] Bell
+99	[Ride] Bow
+98	[Ride] Edge
+97	[Ride] Bell
+96	[Ride] Bow
+95	[Splash 2] Muted Hit
+94	[Splash 1] Muted Hit
+93	[Ride] Bell
+92	[Ride] Bow
+91	[Ride] Edge
+90	[Ride] Bell
+89	[Ride] Bow
+88	[Ride] Bell
+87	[Ride] Bow
+86	[Ride] Edge
+85	[Ride] Bell
+84	[Ride] Bow
+83	[Crash 1] Muted Hit
+82	[Racktom 1] Rimshot
+81	[Racktom 1] Rim Only
+80	[Racktom 2] Rimshot
+79	[Racktom 2] Rim Only
+78	[Racktom 2] Rimshot
+77	[Racktom 2] Rim Only
+76	[Snare] Rim Only
+75	[Floortom 1] Rimshot
+74	[Floortom 1] Rim Only
+73	[Floortom 2] Rimshot
+72	[Floortom 2] Rim Only
+71	[Hightom] Rim Only
+70	[Hightom] Rimshot
+69	[Hightom] Center
+68	[Side Snare] Rimshot
+67	[Side Snare] Rim Only
+66	[Side Snare] Center
+65	[Hats] Closed Edge
+64	[Hats] Open Edge 0
+63	[Hats] Tight Tip
+62	[Hats] Tight Edge
+61	[Hats] Closed Tip
+60	[Hats] Open Edge 4
+59	[Ride] Edge
+58	[Snaps] Hit
+57	[Crash 3] Crash
+56	[Splash 3] Muted Hit
+55	[Splash 3] Crash
+54	[Kit Tambourine] Hit
+53	[Ride] Bell
+52	[China] Crash
+51	[Ride] Bow
+50	[Crash 2] Muted Hit
+49	[Crash 2] Crash
+48	[Racktom 1] Center
+47	[Racktom 2] Center
+46	[Hats] Open Edge 2
+45	[Racktom 2] Center
+44	[Hats] Pedal Closed
+43	[Floortom 1] Center
+42	[Hats] Closed Tip
+41	[Floortom 2] Center
+40	[Snare] Rimshot
+39	[Claps] Hit
+38	[Snare] Center
+37	[Snare] Sidestick
+36	[Kick] Open
+35	[Kick] Open
+34	[Stomps] Hit
+33	[Snare] Edge
+32	[Splash 2] Crash
+31	[Splash 2] Crash
+30	[Stack] Crash
+29	[Splash 1] Crash
+28	[Crash 1] Crash
+27	[Crash 1] Crash
+26	[Hats] Open Edge 3
+25	[Hats] Open Edge 2
+24	[Hats] Open Edge 1
+23	[Hats] Pedal Open
+22	[Hats] Closed Edge
+21	[Hats] Pedal Closed
+20	[Hats] Tip Trigger
+19	[Hats] Tip Trigger
+18	[Hats] Edge Trigger
+17	[Hats] Open Tip 5
+16	[Hats] Open Tip 4
+15	[Hats] Open Tip 3
+14	[Hats] Open Tip 2
+13	[Hats] Open Tip 1
+12	[Hats] Open Tip 0
+11	[Hats] Closed Edge
+10	[Hats] Pedal Closed
+9	[Hats] Tip Trigger
+8	[Hats] Tip Trigger
+7	[Hats] Edge Trigger
+6	[Snare] Zone Trigger
+3	Tambourine Hit Immediate
+2	Shaker Hit Immediate
+1	One-Shot Hit
