@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" name="Mark Heath">
   <category name="Airwindows">
-    <reapack name="Airwindows Bandaxall" type="effect">
-      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
-        <changelog>initial port from GitHub commit 558b93e</changelog>
-        <source file="airwindows-bandaxall.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-bandaxall.jsfx</source>
+    <reapack name="Airwindows Baxandall" type="effect">
+      <version name="0.1" author="Mark Heath" time="2023-10-05T00:00:00+01:00">
+        <changelog>fixed incorrect name</changelog>
+        <source file="airwindows-baxandall.jsfx">https://raw.githubusercontent.com/markheath/jsfx/main/airwindows-baxandall.jsfx</source>
       </version>
     </reapack>
     <reapack name="Airwindows Bright Ambience 3" type="effect">
@@ -148,9 +148,17 @@
       </version>
     </reapack>
     <reapack name="EZX Twisted Kit" type="midinotenames">
-      <version name="0.1" author="Mark Heath" time="2022-05-07T00:00:00+01:00">
+      <version name="0.2" author="Mark Heath" time="2023-10-05T00:00:00+01:00">
         <changelog />
         <source file="EZX Twisted Kit.txt">https://raw.githubusercontent.com/markheath/jsfx/main/note-names/EZX%20Twisted%20Kit.txt</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Scripts">
+    <reapack name="mark-heath auto-riser" type="script">
+      <version name="0.01" author="Mark Heath" time="2023-02-10T00:00:00+01:00">
+        <changelog>initial version (beta)</changelog>
+        <source file="mark-heath auto-riser.lua" main="main">https://raw.githubusercontent.com/markheath/jsfx/main/scripts/mark-heath%20auto-riser.lua</source>
       </version>
     </reapack>
   </category>

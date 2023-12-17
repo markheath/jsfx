@@ -1,15 +1,16 @@
-desc:Airwindows Bandaxall (Mark Heath)
+desc:Airwindows Baxandall (Mark Heath)
 
 // https://github.com/airwindows/airwindows/blob/master/plugins/WinVST/Baxandall/BaxandallProc.cpp
 // original code Copyright (c) 2016 airwindows, All rights reserved
 // license: MIT
 // version history:
 // 0.1 7 May 2022 - initial port from GitHub commit 558b93e
+// 0.1 5 Oct 2023 - fixed incorrect name
 
 //tags: eq
 //author: Mark Heath
 
-// https://www.airwindows.com/bandaxall/
+// https://www.airwindows.com/baxandall/
 
 // default<min, max, increment>
 slider1:0.5<0,1,0.01>Treble

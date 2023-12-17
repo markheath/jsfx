@@ -1,4 +1,4 @@
-# v0.1 7 May 2022
+# v0.2 5 Oct 2023
 18 [Hats] hatsTrig
 20 [Hats] hatsTipTrig
 21 [Hats] Closed Pedal
@@ -107,6 +107,4 @@
 124 [Body Sounds] Card On Beat
 125 [Rattle] Off Bt
 126 [Rattle] On Beat
-127 [Rattle] Cresendo
-
-
+127 [Rattle] Crescendo

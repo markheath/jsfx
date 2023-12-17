@@ -8,6 +8,7 @@ var serializer = new XmlSerializer(typeof(Index));
 var index = new Index() { Name = "Mark Heath" };
 var airwindows = new Category() { Name="Airwindows" };
 var noteMaps = new Category() { Name="EZDrummer MIDI Note Maps" };
+var scripts = new Category() { Name="Scripts" };
 var folder = Path.GetDirectoryName(Util.CurrentQueryPath);
 
 void AddEffect(string file)
@@ -52,6 +53,27 @@ void AddNoteMap(string file, string subfolder)
 	noteMaps.ReaPacks.Add(effect);
 }
 
+void AddScript(string file, string subfolder)
+{
+    var lines = File.ReadAllLines(file);
+    var desc = Path.GetFileNameWithoutExtension(file);
+    var regex = new Regex(@"\-\- v(\d+\.\d+) \((\d+ [a-zA-Z]+ \d{4})\) (.*)");
+    var versionLine = lines.Last(l => regex.IsMatch(l));
+    var matches = regex.Match(versionLine);
+    var version = matches.Groups[1].Value;
+    var date = DateTime.Parse(matches.Groups[2].Value);
+    var message = matches.Groups[3].Value;
+    var script = new ReaPack() { Name = desc, Type = "script" };
+    script.Versions.Add(new Version()
+    {
+        Name = version,
+        ChangeLog = message,
+        Source = new Source(Path.GetFileName(file), subfolder) { Main = "main" },
+        Time = date.ToString("yyyy-MM-dd\\THH:mm:ss+01:00")
+    });
+    scripts.ReaPacks.Add(script);
+}
+
 foreach (var f in Directory.GetFiles(folder, "airwindows-*.jsfx"))
 {
 	AddEffect(f);
@@ -60,10 +82,15 @@ foreach(var f in Directory.GetFiles(Path.Combine(folder,"note-names"), "*.txt"))
 {
 	AddNoteMap(f, "note-names/");
 }
-	
+foreach (var f in Directory.GetFiles(Path.Combine(folder, "scripts"), "*.lua"))
+{
+    AddScript(f, "scripts/");
+}
+
 
 index.Categories.Add(airwindows);
 index.Categories.Add(noteMaps);
+index.Categories.Add(scripts);
 
 await using var memoryStream = new MemoryStream();
 XmlTextWriter streamWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
@@ -107,6 +134,7 @@ public class Source
 	{ 
 		File = file; 
 		Value = $"https://raw.githubusercontent.com/markheath/jsfx/main/{subfolder}{file.Replace(" ","%20")}"; }
-	[XmlAttribute("file")] public string File { get; set; }
-	[XmlText] public string Value { get; set; }
+    [XmlAttribute("file")] public string File { get; set; }
+    [XmlAttribute("main")] public string Main { get; set; }
+    [XmlText] public string Value { get; set; }
 }
